@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../constants';
 import  CustomButton  from '../components/CustomButton';
 import { Redirect, router } from 'expo-router';
+import { icons } from "../constants";
 
 
 
@@ -26,6 +27,8 @@ export default function App(){
                             title="Giriş Yap"
                             handlePress={() => {router.push('./sign-in')}}
                             containerStyles={"w-64 mt-7 items-center"}
+                            icon={icons.home}
+                           
                         />
                     </View>
                     <View>
@@ -33,6 +36,7 @@ export default function App(){
                             title="Kayıt Ol"
                             handlePress={() => {router.push('./sign-up')}}
                             containerStyles={"w-64 mt-7 items-center"}
+                            icon={icons.plus}
                         />
                     </View>
                 </View>
