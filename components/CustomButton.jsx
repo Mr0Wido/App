@@ -4,7 +4,8 @@ import { View } from 'react-native-web';
 
 const CustomButton = ({title, handlePress, containerStyles, textStyles, isLoading, icon}) => {
     return(
-        <TouchableOpacity onPress={handlePress}
+        <TouchableOpacity 
+        onPress={handlePress}
         activeOpacity={0.7}
         className={`bg-primary rounded-xl min-h-[62] justify-center items-start ${containerStyles} ${isLoading ? 'opacity-50': ''}`}>
             <View className="flex-row items-center">
