@@ -7,17 +7,14 @@ const API_URL = 'http://35.159.165.210:3000';
 const api = axios.create({
     baseURL: API_URL,
     timeout: 10000,
-    });
+});
 
-    // API isteği yapmak için fonksiyonlar
-    export const fetchData = async () => {
+// Kullanıcı kaydı fonksiyonu
+export const signUp = async (email, password_hash, name, surname, phone_number, address, business_name) => {
     try {
-    const response = await api.get('/api/data'); // Endpoints burada tanımlanır
-    return response.data;
+    const response = await api.post('/api/signup', { email, password_hash, name, surname, phone_number, address, business_name });
+    return response.data; // JWT token burada döner
     } catch (error) {
-    console.error('API isteğinde hata:', error);
-    throw error;
+    throw new Error(error.response?.data || 'Kayıt yapılırken bir hata oluştu.');
     }
 };
-
-// Diğer API fonksiyonlarını buraya ekleyebilirsiniz
