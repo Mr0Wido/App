@@ -13,16 +13,15 @@ const SignIn = () => {
   });
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View className="w-full flex justify-center h-full px-4 my-6"
-      
-        >
+     <SafeAreaView className="bg-white h-full">
+      <ScrollView contentContainerStyle={{height:'100%'}}>
+        <View className="w-full justify-center items-center h-full px-4">
           <Image
             source={images.logo}
-            resizeMode='contain'
-            className="w-[540px] h-[270px] "
+            className="w-[540] h-[84px]"
+            resize='contain'
           />
+          <View>
           <FormField
           title="Email"
           value={form.email}
@@ -31,15 +30,16 @@ const SignIn = () => {
           keyboardType="email-addres"
           />
           <FormField
-          title="Password"
+          title="Şifre"
           value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
+          </View>
         </View>
 
       </ScrollView>
-    </SafeAreaView>
+     </SafeAreaView>
   )
 }
 
