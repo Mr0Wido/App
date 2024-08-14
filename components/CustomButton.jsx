@@ -1,6 +1,5 @@
-import { TouchableOpacity, Text, Image } from 'react-native'
+import { View, TouchableOpacity, Text, Image } from 'react-native'
 import React from 'react'
-import { View } from 'react-native-web';
 
 const CustomButton = ({title, handlePress, containerStyles, textStyles, isLoading, icon}) => {
     return(
@@ -17,7 +16,7 @@ const CustomButton = ({title, handlePress, containerStyles, textStyles, isLoadin
             )}
             <Text className={`text-newBackGround font-psemibold text-lg ${textStyles}`}> {title} </Text>
             </View>
-         </TouchableOpacity>
+        </TouchableOpacity>
     );
 }
 

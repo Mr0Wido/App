@@ -14,10 +14,10 @@ const FormFiled = ({
 
         return (
             <View className={`space-y-2 ${otherStyles}`}>
-                <Text classname = "text-base text-gray-100 font-pmedium">{title}</Text>
-                <View classname = "w-full h-16 px-4 bg-black-100 rounded-2xl border-black-200 focus:border-secondary flex flex-row items-center">
+                <Text className = "text-base text-slate-950 font-pmedium">{title}</Text>
+                <View className = "w-full h-16 px-4 bg-gray-800 rounded-2xl border-y-red-700 border-4 focus:border-secondary flex flex-row items-center">
                     <TextInput
-                        classname = "flex*2 text-white font-psemibold text-base"
+                        className = "flex*2 text-white font-psemibold text-base"
                         value = {value}
                         placeholder = {placeholder}
                         placeholderTextColor = "gray-200"
@@ -29,7 +29,7 @@ const FormFiled = ({
                         <TouchableOpacity onPress = {() => setShowPassword(!showPassword)}>
                             <Image
                                 source ={!showPassword ? icons.eye : icons.eyeHide}
-                                classname = "w-6 h-6"
+                                className = "w-6 h-6"
                                 resizeMode = "contain"
                             />
                         </TouchableOpacity>
