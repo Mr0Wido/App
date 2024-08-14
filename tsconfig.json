@@ -1,8 +1,6 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./@types/react-native-secure-storage.d.ts"],
-    "allowJs": true,
     "strict": true,
     "paths": {
       "@/*": [

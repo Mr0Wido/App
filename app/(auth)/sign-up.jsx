@@ -23,21 +23,20 @@ const SignUpScreen = ({ navigation }) => {
   });
   
   const handleSignUp = async () => {
-    
     const { name, surname, email, password_hash, phone_number, company_name, company_address } = form;
     
     if (!name || !surname || !email || !password_hash || !phone_number || !company_name || !company_address) {
-      Alert.alert(" Lütfen, tüm alanları doldurunuz!");
+      Alert.alert("Lütfen, tüm alanları doldurunuz!");
       return;
     }
 
     try {
-      const token = await signUp(email, password_hash, name, surname, phone_number, company_name, company_address);
+      const response = await signUp(email, password_hash, name, surname, phone_number, company_name, company_address);
+      const token = response.token; // JWT token burada döner
+      await saveToken(token); // Token'ı güvenli depolamaya kaydediyoruz
       Alert.alert("Başarılı bir şekilde kayıt oldunuz!");
-      await saveToken(token);
       navigation.navigate("Home");
-    }
-    catch (error) {
+    } catch (error) {
       Alert.alert("Kayıt olurken bir hata oluştu: ", error.message);
     }
   };
@@ -51,7 +50,7 @@ const SignUpScreen = ({ navigation }) => {
           <Image
             source={images.logo}
             resizeMode='contain'
-            className="w-[100px] h-[200px] "
+            className="w-[540] h-[84px]"
           />
           <FormField
           title="Name"

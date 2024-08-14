@@ -1,16 +1,36 @@
 import axios from 'axios';
-import * as SecureStorage from 'react-native-secure-storage';
+import * as SecureStore from 'expo-secure-store';
+
+// Token'ı Secure Store'dan almak
+const getToken = async () => {
+    try {
+        const token = await SecureStore.getItemAsync('authToken');
+        return token;
+    } catch (error) {
+        console.error("Error retrieving token: ", error);
+        throw new Error("Failed to retrieve token.");
+    }
+};
+
+// Token'ı Secure Store'a kaydetmek
+const saveToken = async (token) => {
+    try {
+        await SecureStore.setItemAsync('authToken', token);
+    } catch (error) {
+        console.error("Error saving token: ", error);
+        throw new Error("Failed to save token.");
+    }
+};
 
 const refreshToken = async () => {
     try {
-        const token = await SecureStorage.getItem('refreshToken');
+        const token = await getToken(); // refreshToken'ı buradan sağlıyoruz
         if (!token) throw new Error('Refresh token bulunamadı');
         const response = await axios.post('http://35.159.165.210:3000/api/refreshToken', { refreshToken: token });
-        await SecureStorage.setItem('authToken', response.data.token);
-        return response.data.token; // accessToken yerine authToken döndürülüyor
+        return response.data.token; // Yeni auth token'ı döndür
     } catch (error) {
         console.error('Token yenilenirken bir hata oluştu: ', error);
-        throw error; // Hata ile ilgili bilgi verilmelidir
+        throw error;
     }
 };
 
@@ -21,7 +41,7 @@ const api = axios.create({
 
 api.interceptors.request.use(async (config) => {
     try {
-        const token = await SecureStorage.getItem('authToken');
+        const token = await getToken(); // authToken'ı buradan alıyoruz
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -34,9 +54,10 @@ api.interceptors.request.use(async (config) => {
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
-        const { status } = error.response;
+        const { status } = error.response || {};
         if (status === 401) {
             const newToken = await refreshToken();
+            await saveToken(newToken); // Yeni token'ı kaydediyoruz
             error.config.headers.Authorization = `Bearer ${newToken}`;
             return axios.request(error.config);
         }
