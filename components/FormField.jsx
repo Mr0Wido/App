@@ -1,13 +1,12 @@
-import { View } from "react-native-web";
 import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-
 import { icons } from "../constants";
 
 const FormFiled = ({ 
     title,
     value,
     placeholder,
+    handleChangeText,
     otherStyles,
     ...props 
     }) => {
