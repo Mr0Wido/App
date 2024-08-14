@@ -19,7 +19,7 @@ const SignIn = () => {
   });
 
   return (
-     <SafeAreaView>
+    <SafeAreaView>
       <ScrollView>
         <View className="w-full flex justify-center h-full px-4 my-6"
       
@@ -42,31 +42,31 @@ const SignIn = () => {
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
-           <FormField
+          <FormField
           title="Name"
           value={form.userName}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
-           <FormField
+          <FormField
           title="Surname"
           value={form.userSurname}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
-           <FormField
+          <FormField
           title="Phone Number"
           value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
-           <FormField
+          <FormField
           title="Company Name"
           value={form.companyName}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           />
-           <FormField
+          <FormField
           title="Company Address"
           value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
@@ -75,7 +75,7 @@ const SignIn = () => {
         </View>
 
       </ScrollView>
-     </SafeAreaView>
+    </SafeAreaView>
   )
 }
 
