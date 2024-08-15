@@ -30,7 +30,7 @@ const SignIn = () => {
             className="w-[540] h-[84px]"
             resize='contain'
           />
-          <View className="justify center items-center">
+         
           <FormField
           title="Email"
           value={form.email}
@@ -43,6 +43,7 @@ const SignIn = () => {
           value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
+         
           />
           <CustomButton
             title="Giriş Yap"
@@ -59,8 +60,6 @@ const SignIn = () => {
              </Link>
           </View>
           </View>
-        </View>
-
       </ScrollView>
     </SafeAreaView>
   )
