@@ -10,6 +10,7 @@ const FormField = ({
     placeholder,
     handleChangeText,
     otherStyles,
+    icon,
     ...props
     }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +21,14 @@ const FormField = ({
 
             <View className="w-80 h-10 px-12 bg-white rounded-2xl border-2 border-gray-200 focus:border-secondary  items-center flex-row"
            >
+             {icon && (
+            <Image
+                source={icon}
+                className="w-6 h-6 mr-2"
+                resizeMode="contain"
+                style={{tintColor: 'newTextColor'}}
+            />
+        )}
         
             <TextInput
                 className="flex-1 text-newTextColor font-psemibold text-base"
@@ -27,6 +36,7 @@ const FormField = ({
                 placeholder={placeholder}
                 placeholderTextColor="#7B7B8B"
                 onChangeText={handleChangeText}
+                source={icon}
                 secureTextEntry={title === "Şifre" && !showPassword}
                 {...props}
             />
@@ -35,10 +45,11 @@ const FormField = ({
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Image
                     source={!showPassword ? icons.eye : icons.eyeHide}
-                    className="w-6 h-6"
+                    className="w-6 h-6 flex-row"
                     resizeMode="contain"
                 />
                 </TouchableOpacity>
+           
             )}
             
             </View>

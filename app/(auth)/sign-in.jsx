@@ -37,12 +37,14 @@ const SignIn = () => {
           handleChangeText={(e) => setform({...form, email:e})}
           otherStyles="mt-7"
           keyboardType="email-addres"
+          icon={icons.user}
           />
           <FormField
           title="Şifre"
           value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
+          icon={icons.password}
          
           />
           <CustomButton
