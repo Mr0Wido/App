@@ -22,26 +22,48 @@ const SignUpScreen = ({ navigation }) => {
 
   });
   
+  // const handleSignUp = async () => {
+  //   const { name, surname, email, password_hash, phone_number, company_name, company_address } = form;
+    
+  //   if (!name || !surname || !email || !password_hash || !phone_number || !company_name || !company_address) {
+  //     Alert.alert("Lütfen, tüm alanları doldurunuz!");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await signUp(email, password_hash, name, surname, phone_number, company_name, company_address);
+  //     const token = response.token; // JWT token burada döner
+  //     await saveToken(token); // Token'ı güvenli depolamaya kaydediyoruz
+  //     Alert.alert("Başarılı bir şekilde kayıt oldunuz!");
+  //     navigation.navigate("Home");
+  //   } catch (error) {
+  //     Alert.alert("Kayıt olurken bir hata oluştu: ", error.message);
+  //   }
+  // };
+
   const handleSignUp = async () => {
     const { name, surname, email, password_hash, phone_number, company_name, company_address } = form;
-    
+  
     if (!name || !surname || !email || !password_hash || !phone_number || !company_name || !company_address) {
       Alert.alert("Lütfen, tüm alanları doldurunuz!");
       return;
     }
-
+  
+    setLoading(true);
+  
     try {
-      const response = await signUp(email, password_hash, name, surname, phone_number, company_name, company_address);
-      const token = response.token; // JWT token burada döner
-      await saveToken(token); // Token'ı güvenli depolamaya kaydediyoruz
-      Alert.alert("Başarılı bir şekilde kayıt oldunuz!");
+      const response = await signUp(name, surname, email, password_hash, phone_number, company_name, company_address);
+      await saveToken(response.accessToken);
       navigation.navigate("Home");
     } catch (error) {
-      Alert.alert("Kayıt olurken bir hata oluştu: ", error.message);
+      // Check if the error has a response with data
+      const errorMessage = error?.response?.data?.message || "Bir hata oluştu. Lütfen tekrar deneyin.";
+      Alert.alert("Hata", errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
-
-
+  
 
   return (
     <SafeAreaView className= "bg-white h-full">
