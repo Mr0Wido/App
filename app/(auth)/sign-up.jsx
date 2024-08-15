@@ -3,11 +3,12 @@ import { useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Alert } from 'react-native';
 import { saveToken } from '../../services/secureStorage';
-
+import { icons } from '../../constants';
 import CustomButton from '../../components/CustomButton';
 import FormField from '../../components/FormField';
 import { images } from '../../constants';
 import { signUp } from '../../services/apiService';
+import { Link, router } from 'expo-router';
 
 
 const SignUpScreen = ({ navigation }) => {
@@ -63,70 +64,87 @@ const SignUpScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+
+
   
 
   return (
-    <SafeAreaView className= "bg-white h-full">
+    <SafeAreaView className="bg-white h-full">
       <ScrollView>
-        <View className="w-full h-full justify-center  px-4 my-6 py-6">
+        <View className="w-full justify-center items-center h-full px-4 my-6 py-6">
           <Image
             source={images.logo}
-            resizeMode='contain'
-            className="w-[120] h-[84px]"
+            className="w-[540] h-[84px]"
+            resizeMode='contaion'
           />
-          <View>
           <FormField
-          title="Name"
+          title="İsim"
           value={form.name}
-          handleChangeText={(e) => setform({...form, name:e})}
+          handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
-          />
-          <FormField
-          title="Surname"
+          icon={icons.heart}
+          
+          /><FormField
+          title="Soyad"
           value={form.surname}
-          handleChangeText={(e) => setform({...form, surname:e})}
+          handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
-          />
-          <FormField
+          icon={icons.surname}
+          
+          /><FormField
           title="Email"
           value={form.email}
-          handleChangeText={(e) => setform({...form, email:e})}
+          handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
-          keyboardType="email-address"
-          />
-          <FormField
-          title="Password"
+          keyboardType="email-addres"
+          icon={icons.mail}
+          
+          /><FormField
+          title="Şifre"
           value={form.password_hash}
-          handleChangeText={(e) => setform({...form, password_hash:e})}
+          handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
-          secureTextEntry={true}
+          icon={icons.password}
+          
+          /><FormField
+          title="Telefon Numarası"
+          value={form.phone_number}
+          handleChangeText={(e) => setform({...form, password:e})}
+          otherStyles="mt-7"
+          keyboardType="phone-pad"
+          icon={icons.smartPhone}
+          
+          /><FormField
+          title="Şirket İsmi"
+          value={form.company_name}
+          handleChangeText={(e) => setform({...form, password:e})}
+          otherStyles="mt-7"
+          icon={icons.home}
           
           />
           <FormField
-          title="Telefon Numarası"
-          value={form.phone_number}
-          handleChangeText={(e) => setform({...form, phone_number:e})}
-          otherStyles="mt-7"
-          keyboardType="phone-pad"
-          />
-          <FormField
-          title="Company Name"
-          value={form.company_name}
-          handleChangeText={(e) => setform({...form, company_name:e})}
-          otherStyles="mt-7"
-          />
-          <FormField
-          title="Company Address"
+          title="Adres"
           value={form.company_address}
-          handleChangeText={(e) => setform({...form, company_address:e})}
+          handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
+          icon={icons.map}
           />
           <CustomButton
-            title="Sign Up"
-            handlePress={handleSignUp}
-            containerStyles={" mt-7 items-center"}
+            title="Kayıt Ol"
+            handlePress={() => (router.push('./sign-in'))}
+            containerStyles="w-64 mt-7 items-center"
+            icon={icons.plus}
           />
-          </View>
+          <View className="flex justify-center flex-row gap-2">
+            <Text className="p-2 text-base text-newTextColor font-pregular">
+              Hesabınız var ise
+            </Text>
+            <Link  href='/sign-in' className='p-2 text-base text-primary font-pregular'>
+              Giriş Yap
+            </Link>
+            
+          </View> 
+            
         </View>
       </ScrollView>
     </SafeAreaView>
