@@ -11,7 +11,6 @@ const FormField = ({
     handleChangeText,
     otherStyles,
     icon,
-    selectionColor,
     ...props
     }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -39,7 +38,6 @@ const FormField = ({
                 placeholderTextColor="#7B7B8B"
                 onChangeText={handleChangeText}
                 source={icon}
-                selectionColor="newTextColor"
                 secureTextEntry={title === "Şifre" && !showPassword}
                 {...props}
             />
