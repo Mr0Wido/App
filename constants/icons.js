@@ -13,6 +13,7 @@ import smartPhone from "../assets/icons/smartPhone.png";
 import user from "../assets/icons/user.png";
 import eye from "../assets/icons/eye.png";
 import eyeHide from "../assets/icons/eyeHide.png";
+import surname from "../assets/icons/surname.png"
 
 
 export default {
@@ -31,5 +32,6 @@ export default {
      user,
      eye,
      eyeHide,
+     surname,
 };
 
