@@ -32,7 +32,7 @@ const FormField = ({
         )}
         
             <TextInput
-                className="flex-1 text-newTextColor font-psemibold text-base rig "
+                className="flex-1 text-newTextColor font-psemibold text-base"
                 value={value}
                 placeholder={placeholder}
                 placeholderTextColor="#7B7B8B"
