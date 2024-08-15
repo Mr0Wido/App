@@ -77,6 +77,7 @@ const SignUpScreen = ({ navigation }) => {
           value={form.password_hash}
           handleChangeText={(e) => setform({...form, password_hash:e})}
           otherStyles="mt-7"
+          secureTextEntry={true}
           
           />
           <FormField
