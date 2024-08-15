@@ -19,7 +19,7 @@ const FormField = ({
             <Text className="text-base text-newTextColor font-pmedium">{title}</Text>
 
             <View className="w-full h-10 px-16 bg-white rounded-2xl border-2 border-gray-200 focus:border-secondary flex flex-row items-center">
-            <View className="flex-row justify-center items-center">
+            
             <TextInput
                 className="flex-1 text-newTextColor font-psemibold text-base"
                 value={value}
@@ -39,7 +39,7 @@ const FormField = ({
                 />
                 </TouchableOpacity>
             )}
-            </View>
+            
             </View>
         </View>
     );

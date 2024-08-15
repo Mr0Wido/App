@@ -5,6 +5,7 @@ import CustomButton from '../../components/CustomButton';
 import FormField from '../../components/FormField';
 import { images } from '../../constants';
 import { Link } from 'expo-router';
+import { icons } from '../../constants';
 
 const SignIn = () => {
 
@@ -47,6 +48,7 @@ const SignIn = () => {
             title="Giriş Yap"
             handlePress={submit}
             containerStyles="w-64 mt-7 items-center"
+            icon={icons.home}
           />
           <View className="flex justify-center flex-row gap-2">
              <Text className="text-lg text-newTextColor font-pregular">
