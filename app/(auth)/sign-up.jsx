@@ -47,9 +47,6 @@ const SignUpScreen = ({ navigation }) => {
     }
   };
 
-
-  
-
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView>
@@ -62,21 +59,21 @@ const SignUpScreen = ({ navigation }) => {
           <FormField
           title="İsim"
           value={form.name}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, name:e})}
           otherStyles="mt-7"
           icon={icons.heart}
           
           /><FormField
           title="Soyad"
           value={form.surname}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, surname:e})}
           otherStyles="mt-7"
           icon={icons.surname}
           
           /><FormField
           title="Email"
           value={form.email}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, email:e})}
           otherStyles="mt-7"
           keyboardType="email-addres"
           icon={icons.mail}
@@ -91,7 +88,7 @@ const SignUpScreen = ({ navigation }) => {
           /><FormField
           title="Telefon Numarası"
           value={form.phone_number}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, phone_number:e})}
           otherStyles="mt-7"
           keyboardType="phone-pad"
           icon={icons.smartPhone}
@@ -99,7 +96,7 @@ const SignUpScreen = ({ navigation }) => {
           /><FormField
           title="Şirket İsmi"
           value={form.company_name}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, company_name:e})}
           otherStyles="mt-7"
           icon={icons.home}
           
@@ -107,7 +104,7 @@ const SignUpScreen = ({ navigation }) => {
           <FormField
           title="Adres"
           value={form.company_address}
-          handleChangeText={(e) => setform({...form, password:e})}
+          handleChangeText={(e) => setform({...form, company_address:e})}
           otherStyles="mt-7"
           icon={icons.map}
           />
