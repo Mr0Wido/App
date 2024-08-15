@@ -53,10 +53,10 @@ const SignIn = () => {
             icon={icons.home}
           />
           <View className="flex justify-center flex-row gap-2">
-            <Text className="p-1 text-sm text-newTextColor font-pregular">
+            <Text className="p-2 text-sm text-newTextColor font-pregular">
               Hesabınız yok mu? 
             </Text>
-            <Link  href="/sign-up" className="p-1 text-sm font-psemibold text-primary">
+            <Link  href="/sign-up" className="p-2 text-sm font-psemibold text-primary">
               Kayıt Ol
             </Link>
           </View>
