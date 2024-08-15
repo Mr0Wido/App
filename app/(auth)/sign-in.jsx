@@ -14,7 +14,7 @@ const SignIn = () => {
     password: "",
   });
   const submit = async () => {
-    //check kısmı olucak email password
+    
   }
 
   return (
@@ -44,7 +44,7 @@ const SignIn = () => {
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           icon={icons.password}
-         
+          
           />
           <CustomButton
             title="Giriş Yap"
