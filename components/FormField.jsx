@@ -27,7 +27,7 @@ const FormField = ({
                 source={icon}
                 className="w-6 h-6 right-8"
                 resizeMode="contain"
-                tintColor={"newTextColor"}
+                tintColor={"orange"}
                 
             />
         )}
