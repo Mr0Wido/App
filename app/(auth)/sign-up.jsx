@@ -16,36 +16,19 @@ const SignUpScreen = ({ navigation }) => {
     name: "",
     surname: "",
     email: "",
-    password_hash: "",
+    password: "",
     phone_number: "",
     company_name: "",
     company_address: "",
 
   });
   
-  // const handleSignUp = async () => {
-  //   const { name, surname, email, password_hash, phone_number, company_name, company_address } = form;
-    
-  //   if (!name || !surname || !email || !password_hash || !phone_number || !company_name || !company_address) {
-  //     Alert.alert("Lütfen, tüm alanları doldurunuz!");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await signUp(email, password_hash, name, surname, phone_number, company_name, company_address);
-  //     const token = response.token; // JWT token burada döner
-  //     await saveToken(token); // Token'ı güvenli depolamaya kaydediyoruz
-  //     Alert.alert("Başarılı bir şekilde kayıt oldunuz!");
-  //     navigation.navigate("Home");
-  //   } catch (error) {
-  //     Alert.alert("Kayıt olurken bir hata oluştu: ", error.message);
-  //   }
-  // };
+  const [loading, setLoading] = useState(false); 
 
   const handleSignUp = async () => {
-    const { name, surname, email, password_hash, phone_number, company_name, company_address } = form;
+    const { name, surname, email, password, phone_number, company_name, company_address } = form;
   
-    if (!name || !surname || !email || !password_hash || !phone_number || !company_name || !company_address) {
+    if (!name || !surname || !email || !password || !phone_number || !company_name || !company_address) {
       Alert.alert("Lütfen, tüm alanları doldurunuz!");
       return;
     }
@@ -53,11 +36,10 @@ const SignUpScreen = ({ navigation }) => {
     setLoading(true);
   
     try {
-      const response = await signUp(name, surname, email, password_hash, phone_number, company_name, company_address);
+      const response = await signUp(name, surname, email, password, phone_number, company_name, company_address);
       await saveToken(response.accessToken);
       navigation.navigate("Home");
     } catch (error) {
-      // Check if the error has a response with data
       const errorMessage = error?.response?.data?.message || "Bir hata oluştu. Lütfen tekrar deneyin.";
       Alert.alert("Hata", errorMessage);
     } finally {
@@ -101,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
           
           /><FormField
           title="Şifre"
-          value={form.password_hash}
+          value={form.password}
           handleChangeText={(e) => setform({...form, password:e})}
           otherStyles="mt-7"
           icon={icons.password}
