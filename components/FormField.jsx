@@ -19,9 +19,9 @@ const FormField = ({
         <View className={`space-y-2 ${otherStyles}`}>
             <Text className="text-base text-newTextColor font-pmedium">{title}</Text>
 
-            <View className="w-80 h-10 px-12 bg-white rounded-2xl border-2 border-gray-200 focus:border-secondary  items-center flex-row"
-           >
-             {icon && (
+            <View className="w-80 h-10 px-12 bg-slate-50 rounded-2xl border-2 border-gray-300 focus:border-secondary  items-center flex-row"
+        >
+            {icon && (
             <Image
                 source={icon}
                 className="w-6 h-6 right-8"
