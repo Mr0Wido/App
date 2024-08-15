@@ -75,13 +75,15 @@ api.interceptors.response.use(
 );
 
 // Signup fonksiyonu
-export const signUp = async (email, password_hash, name, surname, phone_number, company_name, company_address) => {
+export const signUp = async (name, surname, email, password, phone_number, company_name, company_address) => {
     try {
-        const response = await api.post('/api/signup', { email, password_hash, name, surname, phone_number, company_name, company_address });
+        const response = await api.post('/api/signup', { name, surname, email, password, phone_number, company_name, company_address });
         return response.data; // JWT token burada döner
     } catch (error) {
-        throw new Error(error.response?.data || 'Kayıt yapılırken bir hata oluştu.');
+        console.error("Error during sign up:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Kayıt yapılırken bir hata oluştu.');
     }
 };
+
 
 export default api;
