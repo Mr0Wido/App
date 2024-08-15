@@ -24,14 +24,15 @@ const FormField = ({
              {icon && (
             <Image
                 source={icon}
-                className="w-6 h-6"
+                className="w-6 h-6 right-8"
                 resizeMode="contain"
                 tintColor={"newTextColor"}
+                
             />
         )}
         
             <TextInput
-                className="flex-1 text-newTextColor font-psemibold text-base"
+                className="flex-1 text-newTextColor font-psemibold text-base rig "
                 value={value}
                 placeholder={placeholder}
                 placeholderTextColor="#7B7B8B"
@@ -45,7 +46,7 @@ const FormField = ({
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Image
                     source={!showPassword ? icons.eye : icons.eyeHide}
-                    className="w-6 h-6 flex-row"
+                    className="w-6 h-6 flex-row left-12"
                     resizeMode="contain"
                 />
                 </TouchableOpacity>
