@@ -30,7 +30,6 @@ const SignIn = () => {
             className="w-[540] h-[84px]"
             resize='contain'
           />
-         
           <FormField
           title="Email"
           value={form.email}
@@ -54,12 +53,12 @@ const SignIn = () => {
             icon={icons.home}
           />
           <View className="flex justify-center flex-row gap-2">
-             <Text className="text-lg text-newTextColor font-pregular">
-                Hesabınız yok mu? 
-             </Text>
-             <Link  href="/sign-up" className="text-lg font-psemibold text-primary">
-               Kayıt Ol
-             </Link>
+            <Text className="p-1 text-sm text-newTextColor font-pregular">
+              Hesabınız yok mu? 
+            </Text>
+            <Link  href="/sign-up" className="p-1 text-sm font-psemibold text-primary">
+              Kayıt Ol
+            </Link>
           </View>
           </View>
       </ScrollView>
