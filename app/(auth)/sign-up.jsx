@@ -44,14 +44,15 @@ const SignUpScreen = ({ navigation }) => {
 
 
   return (
-    <SafeAreaView className= "flex-1">
+    <SafeAreaView className= "bg-white h-full">
       <ScrollView>
         <View className="w-full h-full justify-center  px-4 my-6 py-6">
           <Image
             source={images.logo}
             resizeMode='contain'
-            className="w-[540] h-[84px]"
+            className="w-[120] h-[84px]"
           />
+          <View>
           <FormField
           title="Name"
           value={form.name}
@@ -76,7 +77,7 @@ const SignUpScreen = ({ navigation }) => {
           value={form.password_hash}
           handleChangeText={(e) => setform({...form, password_hash:e})}
           otherStyles="mt-7"
-          secureTextEntry
+          
           />
           <FormField
           title="Telefon Numarası"
@@ -102,6 +103,7 @@ const SignUpScreen = ({ navigation }) => {
             handlePress={handleSignUp}
             containerStyles={" mt-7 items-center"}
           />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
