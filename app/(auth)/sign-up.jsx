@@ -110,7 +110,7 @@ const SignUpScreen = ({ navigation }) => {
           />
           <CustomButton
             title="Kayıt Ol"
-            handlePress={loading}
+            handlePress={() => (router.push('./sign-in'))}
             containerStyles="w-64 mt-7 items-center"
             icon={icons.plus}
           />
