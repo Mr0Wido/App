@@ -4,6 +4,8 @@ import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 import { icons } from "../constants";
 
+
+
 const FormField = ({
     title,
     value,
@@ -14,6 +16,7 @@ const FormField = ({
     ...props
     }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [isFocus, setisFocus] = useState(false);
 
     return (
         <View className={`space-y-2 ${otherStyles}`}>
@@ -26,7 +29,7 @@ const FormField = ({
                 source={icon}
                 className="w-6 h-6 right-8"
                 resizeMode="contain"
-                tintColor={"orange"}
+                style={{tintColor: isFocus ? 'orange' : 'newTextColor'}}
                 
             />
         )}
@@ -34,10 +37,13 @@ const FormField = ({
             <TextInput
                 className="flex-1 text-newTextColor font-psemibold text-base"
                 value={value}
+                style={{}}
                 placeholder={placeholder}
                 placeholderTextColor="#7B7B8B"
                 onChangeText={handleChangeText}
                 source={icon}
+                onFocus={() => setisFocus(true)}
+                onBlur={() => setisFocus(false)}
                 secureTextEntry={title === "Şifre" && !showPassword}
                 {...props}
             />
@@ -46,7 +52,7 @@ const FormField = ({
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Image
                     source={!showPassword ? icons.eye : icons.eyeHide}
-                    className="w-6 h-6 flex-row left-12"
+                    className="w-6 h-6 flex-row left-8"
                     resizeMode="contain"
                 />
                 </TouchableOpacity>
