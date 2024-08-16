@@ -5,6 +5,10 @@ import * as SecureStore from 'expo-secure-store';
 const getToken = async () => {
     try {
         const token = await SecureStore.getItemAsync('authToken');
+        if (!token) {
+            console.error('Token bulunamadı');
+            throw new Error('Token bulunamadı');
+        }
         return token;
     } catch (error) {
         console.error("Error retrieving token: ", error.message);
@@ -15,6 +19,10 @@ const getToken = async () => {
 // Token'ı Secure Store'a kaydetmek
 const saveToken = async (token) => {
     try {
+        if (typeof token !== 'string') {
+            console.error('Geçersiz token formatı');
+            throw new Error('Invalid token format');
+        }
         await SecureStore.setItemAsync('authToken', token);
     } catch (error) {
         console.error("Error saving token: ", error.message);
@@ -27,7 +35,7 @@ const refreshToken = async () => {
     try {
         const token = await getToken(); // refreshToken'ı buradan sağlıyoruz
         if (!token) throw new Error('Refresh token bulunamadı');
-        const response = await axios.post(`http://35.159.165.210:3000/api/refresh-token`, { refreshToken: token });
+        const response = await axios.post('http://35.159.165.210:3000/api/refresh-token', { refreshToken: token });
         return response.data.accessToken; // Yeni auth token'ı döndür
     } catch (error) {
         console.error('Token yenilenirken bir hata oluştu: ', error.message);
@@ -84,6 +92,3 @@ export const signUp = async (name, surname, email, password, phone_number, compa
         throw new Error(error.response?.data?.message || 'Kayıt yapılırken bir hata oluştu.');
     }
 };
-
-
-export default api;
