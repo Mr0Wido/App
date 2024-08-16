@@ -21,9 +21,7 @@ module.exports = {
         newBackGround: {
           DEFAULT: "#F5EFF7",
         },
-        newTextColor: {
-          DEFAULT: "#161622",
-        }
+        
       },
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],

@@ -29,7 +29,7 @@ const FormField = ({
                 source={icon}
                 className="w-6 h-6 right-8"
                 resizeMode="contain"
-                style={{tintColor: isFocus ? 'orange' : 'newTextColor'}}
+                style={{tintColor: isFocus ? 'orange' : 'black'}}
                 
             />
         )}

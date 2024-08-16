@@ -59,6 +59,9 @@ const SignIn = () => {
             <Link  href="/sign-up" className="p-2 text-sm font-psemibold text-primary">
               Kayıt Ol
             </Link>
+            <Link  href="/home" className="p-2 text-sm font-psemibold text-primary">
+              Anasayfa Giriş
+            </Link>
           </View>
           </View>
       </ScrollView>
