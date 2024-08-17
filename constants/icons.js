@@ -16,6 +16,7 @@ import eyeHide from "../assets/icons/eyeHide.png";
 import surname from "../assets/icons/surname.png"
 import search from "../assets/icons/search.png"
 import category from "../assets/icons/category.png"
+import check from "../assets/icons/check.png"
 
 
 export default {
@@ -37,5 +38,6 @@ export default {
      surname,
      search,
      category,
+     check,
 };
 
