@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
+import EmptyState from '../components/EmptyState';
 
 const Trending = ({ posts }) => {
   return (
@@ -13,6 +14,12 @@ const Trending = ({ posts }) => {
         </Text>
     )}
     horizontal
+    ListEmptyComponent={() => (
+      <EmptyState 
+      title="Ürün Bulunmuyor"
+      subtitle="Sipariş Ver"
+      />
+     )}
    />
   )
 }

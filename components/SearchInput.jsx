@@ -1,46 +1,44 @@
-import { useState } from "react";
+
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 
 import { icons } from "../constants";
-
-
-
 const SearchInput= ({
-    title,
     value,
     placeholder,
     handleChangeText,
     otherStyles,
     ...props
     }) => {
-   
-   
-
     return (
-
-            <View className="w-80 h-10 px-12 bg-slate-50 rounded-2xl border-2 border-gray-300 focus:border-secondary items-center flex-row space-x-4"
-        >
+    <View className="w-full flex-row">
+        <View className="w-[85%] h-10 px-12 bg-slate-50 rounded-2xl border-2 border-gray-300 focus:border-secondary items-center flex-row"> 
+            <Image
+            source={icons.search}
+            className="w-5 h-5 right-8"
+            tintColor={'black'}
+            resizeMode='contain'
+            />  
             <TextInput
-                className="text-base mt-0.5 text-black flex-1 font-pregular"
-                value={value}
-                placeholder="Ürün ara"
-                placeholderTextColor="#7B7B8B"
-                onChangeText={handleChangeText}
-                secureTextEntry={title === "Şifre" && !showPassword}
-                {...props}
+            className="text-base flex-1 text-black-100 text-psemibold"
+            value={value}
+            placeholder="Ürün ara"
+            placeholderTextColor="#7B7B8B"
+            onChangeText={handleChangeText}  
             />
-            <TouchableOpacity>
-                <Image
-                    source={icons.search}
-                    className="w-5 h-5 left-4"
-                    tintColor={'black'}
-                    resizeMode='contain'
+        </View>
+     <View className="w-[15%] h-10 items-center justify-center">
+            <TouchableOpacity
+            activeOpacity={0.2}>
+                <Image 
+                    source={icons.category}
+                    className="w-10 h-10"
+                    tintColor='black'
+                    resizeMode="contaion"
                 />
             </TouchableOpacity>
-            
-            </View>
-        
+        </View>
+    </View>            
     );
 };
 
