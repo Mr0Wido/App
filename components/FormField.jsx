@@ -59,7 +59,7 @@ const FormField = ({
                 </TouchableOpacity>
            
             )}
-            <CustomButton />
+            
             </View>
         </View>
     );
