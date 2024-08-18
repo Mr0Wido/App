@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import { icons } from '../../constants';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
@@ -34,6 +35,14 @@ const Profile = () => {
         otherStyles="mt-7"
         icon={icons.user}
       />
+      <TouchableOpacity>
+        
+      </TouchableOpacity>
+       </View>
+       <View className="w-full flex-row justify-center items-center  mt-8 -mb-16 ">
+         <Text className="text-3xl font-semibold items-center justify-center">
+          Hesap Bilgileri
+        </Text>
        </View>
       <View className="w-full justify-center items-start h-full px-4">
       <FormField
