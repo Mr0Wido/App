@@ -54,7 +54,7 @@ const SignUpScreen = ({ navigation }) => {
           <Image
             source={images.logo}
             className="w-[540] h-[84px]"
-            resizeMode='contaion'
+            resizeMode='contain'
           />
           <FormField
           title="İsim"
@@ -75,7 +75,7 @@ const SignUpScreen = ({ navigation }) => {
           value={form.email}
           handleChangeText={(e) => setform({...form, email:e})}
           otherStyles="mt-7"
-          keyboardType="email-addres"
+          keyboardType="email-address"
           icon={icons.mail}
           
           /><FormField

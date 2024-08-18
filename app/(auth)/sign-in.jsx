@@ -1,21 +1,52 @@
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { saveToken} from '../../services/secureStorage';
 import CustomButton from '../../components/CustomButton';
 import FormField from '../../components/FormField';
 import { images } from '../../constants';
+import { signIn } from '../../services/apiService';
 import { Link } from 'expo-router';
 import { icons } from '../../constants';
+import { Alert } from 'react-native';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
 
   const [form, setform] = useState({
     email: "",
     password: "",
   });
-  const submit = async () => {
-    
-  }
+  const [loading, setLoading] = useState(false);
+
+  const handleSignIn = async () => {
+    const { email, password } = form;
+
+    if (!email || !password) {
+      Alert.alert("Lütfen, tüm alanları doldurunuz!");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await signIn(email, password);
+
+      if (response.accessToken && response.refreshToken === 'string') {
+        await saveToken(response.accessToken);
+        console.log("Token kaydedildi");
+        navigation.navigate("Home");
+      } else {
+        throw new Error("Geçersiz token formatı");
+      }
+
+    } catch (error) {
+      const errorMessage = error?.response?.data?.message || "Bir hata oluştu. Lütfen tekrar deneyin.";
+      Alert.alert("Hata", errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -48,7 +79,7 @@ const SignIn = () => {
           />
           <CustomButton
             title="Giriş Yap"
-            handlePress={submit}
+            handlePress={handleSignIn}
             containerStyles="w-64 mt-7 items-center"
             icon={icons.home}
           />
@@ -67,6 +98,7 @@ const SignIn = () => {
       </ScrollView>
     </SafeAreaView>
   )
-}
+};
+
 
 export default SignIn
