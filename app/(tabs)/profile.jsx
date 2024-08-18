@@ -18,7 +18,7 @@ const Profile = () => {
     submit();
   }
   const submit = async () => {
-      console.log("submit ve iconClicked calıstı")
+     
   }
 
   const [form, setform] = useState({
@@ -38,17 +38,22 @@ const Profile = () => {
     <SafeAreaView className="h-full bg-white">
       <ScrollView>
        <View className="w-full flex-row items-center justify-center">
+        <Image 
+          className="w-12 h-12 mt-14 right-8"
+          source={icons.user}
+          tintColor={'orange'}
+        />
        <FormField
         title="Müşteri Numarası"
         value={form.customerNo}
         otherStyles="mt-7"
-        icon={icons.user}
       />
       <TouchableOpacity
+        className="mt-14 left-8"
         onPress={handleIconPress}
       >
         <Image 
-          className="w-10 h-10"
+          className="w-12 h-12 "
           source={icons.change}
           tintColor={'black'}
 
