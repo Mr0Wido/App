@@ -54,7 +54,6 @@ const SignUpScreen = ({ navigation }) => {
           <Image
             source={images.logo}
             className="w-[540] h-[84px]"
-            resizeMode='contain'
           />
           <FormField
           title="İsim"
