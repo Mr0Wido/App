@@ -13,6 +13,7 @@ const FormField = ({
     handleChangeText,
     otherStyles,
     icon,
+    isEditable = true,
     ...props
     }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +41,8 @@ const FormField = ({
                 style={{}}
                 placeholder={placeholder}
                 placeholderTextColor="#7B7B8B"
-                onChangeText={handleChangeText}
+                onChangeText={isEditable ? handleChangeText : undefined}
+                editable={isEditable}
                 source={icon}
                 onFocus={() => setisFocus(true)}
                 onBlur={() => setisFocus(false)}
