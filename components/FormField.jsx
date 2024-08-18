@@ -49,12 +49,13 @@ const FormField = ({
             />
 
             {title === "Şifre" && (
-                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Image
-                    source={!showPassword ? icons.eye : icons.eyeHide}
-                    className="w-6 h-6 flex-row left-8"
-                    resizeMode="contain"
-                />
+                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}
+                style={{position: 'absolute', left:330}}>
+                    <Image
+                        source={!showPassword ?         icons.eye : icons.eyeHide}
+                        className="w-6 h-6"
+                        resizeMode="contain"
+                    />
                 </TouchableOpacity>
            
             )}
