@@ -33,7 +33,7 @@ const Home = () => {
           <View className="my-6 px-4 space-y-6">
             <View className=" justify-between items-start flew-row mb-6">
               <View className="flex-1 justify-center items-center w-full">
-                <Image
+              <Image
                   className="bg-white h-[80]" 
                   source={images.logo}
                 />
