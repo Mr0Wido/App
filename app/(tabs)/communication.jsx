@@ -14,7 +14,7 @@ const Communication = () => {
   }
   const [iconClicked, seticonClicked] = useState(false)
   const submit = () => {
-    console.log("submit ve  seticonClicked calıstı")
+    
   }
 
   return (
@@ -23,17 +23,22 @@ const Communication = () => {
         <FormField
           title="Bircan TOPTAN"
           value={"55-555-555-555"}
+          otherStyles="mt-7"
         />
         <Pressable
+          className="mt-4 left-8"
           onPress={handleIconPressed}
         >
           <Image 
-            className="left-12"
+            className="w-12 h-12 -mb-2"
             source={icons.phone}
             tintColor={iconClicked ? "orange": "black"}
             
           />
         </Pressable>
+      </View>
+      <View className="w-full justify-center items-center px-4 my-6 py-6">
+        <Text>HELLO</Text>
       </View>
       
     </SafeAreaView>

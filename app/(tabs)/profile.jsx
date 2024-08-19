@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, Image, ScrollView, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
@@ -48,17 +48,17 @@ const Profile = () => {
         value={form.customerNo}
         otherStyles="mt-7"
       />
-      <TouchableOpacity
+      <Pressable
         className="mt-14 left-8"
         onPress={handleIconPress}
       >
         <Image 
           className="w-12 h-12 "
           source={icons.change}
-          tintColor={'black'}
+          tintColor={iconClicked ? 'orange': 'black'}
 
         />
-      </TouchableOpacity>
+      </Pressable>
       
        </View>
        <View className="w-full flex-row justify-center items-center  mt-8 -mb-16 ">
