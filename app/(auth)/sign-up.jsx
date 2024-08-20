@@ -110,7 +110,7 @@ const SignUpScreen = ({ navigation }) => {
           <CustomButton
             title="Kayıt Ol"
             handlePress={handleSignUp}
-            containerStyles="w-64 mt-7 items-center"
+            containerStyles="bg-primary w-64 mt-7 items-center"
             icon={icons.plus}
           />
           <View className="flex justify-center flex-row gap-2">

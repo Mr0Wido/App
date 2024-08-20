@@ -18,10 +18,6 @@ module.exports = {
         gray: {
           100: "#CDCDE0",
         },
-        newBackGround: {
-          DEFAULT: "#F5EFF7",
-        },
-        
       },
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],

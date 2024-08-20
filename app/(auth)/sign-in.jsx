@@ -80,7 +80,7 @@ const SignIn = ({ navigation }) => {
           <CustomButton
             title="Giriş Yap"
             handlePress={handleSignIn}
-            containerStyles="w-64 mt-7 items-center"
+            containerStyles="bg-primary w-64 mt-7 items-center"
             icon={icons.home}
           />
           <View className="flex justify-center flex-row gap-2">

@@ -26,7 +26,7 @@ export default function App(){
                         <CustomButton
                             title="Giriş Yap"
                             handlePress={() => {router.push('./sign-in')}}
-                            containerStyles={"w-64 mt-7 items-center"}
+                            containerStyles={"bg-primary w-64 mt-7 items-center"}
                             icon={icons.home}
                         
                         />
