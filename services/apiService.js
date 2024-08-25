@@ -1,10 +1,11 @@
 import axios from 'axios';
-import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
 
-// Token'ı Secure Store'dan almak
+// Token'ı AsyncStorage'dan almak
 const getToken = async () => {
     try {
-        const token = await SecureStore.getItemAsync('authToken');
+        const token = await AsyncStorage.getItem('authToken');
         if (!token) {
             console.error('Token bulunamadı');
             throw new Error('Token bulunamadı');
@@ -16,14 +17,14 @@ const getToken = async () => {
     }
 };
 
-// Token'ı Secure Store'a kaydetmek
+// Token'ı AsyncStorage'a kaydetmek
 const saveToken = async (token) => {
     try {
         if (typeof token !== 'string') {
             console.error('Geçersiz token formatı');
             throw new Error('Invalid token format');
         }
-        await SecureStore.setItemAsync('authToken', token);
+        await AsyncStorage.setItem('authToken', token);
     } catch (error) {
         console.error("Error saving token: ", error.message);
         throw new Error("Failed to save token.");

@@ -1,23 +1,33 @@
-import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-async function saveToken(token) {
+// Token'ı saklama
+export async function saveToken(token) {
     try {
-    // Eğer token bir obje ise JSON.stringify() ile string'e dönüştürün
-    const tokenString = typeof token === 'string' ? token : JSON.stringify(token);
-    await SecureStore.setItemAsync('authToken', tokenString);
-    } catch (error) {
-    console.error('Error saving token:', error);
-    }
-    }
+        // Token'ı stringe çeviriyoruz
+        const tokenString = JSON.stringify(token);
 
-    async function getToken() {
+        // Token'ı AsyncStorage'e kaydediyoruz
+        await AsyncStorage.setItem('authToken', tokenString);
+    } catch (error) {
+        console.error('Error saving token:', error.message);
+    }
+}
+
+// Token'ı alma
+export async function getToken() {
     try {
-    const tokenString = await SecureStore.getItemAsync('authToken');
-    // Eğer token bir obje olarak kaydedildiyse JSON.parse() ile tekrar obje haline getirin
-    return tokenString ? JSON.parse(tokenString) : null;
+        const tokenString = await AsyncStorage.getItem('authToken');
+        return tokenString ? JSON.parse(tokenString) : null;
     } catch (error) {
-    console.error('Error retrieving token:', error);
+        console.error('Error retrieving token:', error.message);
     }
-    }
+}
 
-export { saveToken, getToken };
+// Token'ı silme
+export async function removeToken() {
+    try {
+        await AsyncStorage.removeItem('authToken');
+    } catch (error) {
+        console.error('Error removing token:', error.message);
+    }
+}
