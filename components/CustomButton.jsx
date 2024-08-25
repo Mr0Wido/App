@@ -14,7 +14,7 @@ const CustomButton = ({title, handlePress, containerStyles, textStyles, isLoadin
                     style={{ width: 20, height: 20, marginRight: 1 }}
                 />
             )}
-            <Text className={`text-newBackGround font-psemibold text-lg ${textStyles}`}> {title} </Text>
+            <Text className={`text-white font-psemibold text-lg ${textStyles}`}> {title} </Text>
             </View>
         </TouchableOpacity>
     );

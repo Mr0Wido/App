@@ -35,7 +35,7 @@ export default function App(){
                         <CustomButton
                             title="Kayıt Ol"
                             handlePress={() => {router.push('./sign-up')}}
-                            containerStyles={"w-64 mt-7 items-center"}
+                            containerStyles={"bg-primary w-64 mt-7 items-center"}
                             icon={icons.plus}
                         />
                     </View>
