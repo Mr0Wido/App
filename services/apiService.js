@@ -83,6 +83,19 @@ api.interceptors.response.use(
     }
 );
 
+
+// Signin fonksiyonu
+export const signIn  = async (email,password) => {
+    try {
+        const response = await api.post('/api/signin', { email, password });
+        return response.data; // JWT token burada döner
+    }
+    catch (error) {
+        console.error("Error during sign in:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Giriş yapılırken bir hata oluştu.');
+    }
+}
+
 // Signup fonksiyonu
 export const signUp = async (name, surname, email, password, phone_number, company_name, company_address) => {
     try {

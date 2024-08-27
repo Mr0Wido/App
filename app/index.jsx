@@ -5,10 +5,31 @@ import { images } from '../constants';
 import  CustomButton  from '../components/CustomButton';
 import { Redirect, router } from 'expo-router';
 import { icons } from "../constants";
+import { getToken } from '../services/secureStorage';
+import { useEffect } from 'react';
 
 
 
 export default function App(){
+
+    useEffect(() => {
+        const checkToken = async () => {
+            try {
+                const token = await getToken();
+                if(token){
+                    router.replace('./home');
+                }
+                else{
+                    router.replace('./sign-in');
+                }
+            } catch (error) {
+                console.error('Error while checking token', error);
+                router.replace('./sign-in');
+            }
+        };
+        checkToken();
+    }, []);
+
     return (
         <SafeAreaView className="bg-white h-full">
             <ScrollView contentContainerStyle={{height:'100%'}}>

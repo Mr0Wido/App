@@ -1,4 +1,3 @@
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, ScrollView, Image, Alert } from 'react-native';
@@ -49,7 +48,6 @@ const SignUpScreen = () => {
     };
 
     return (
-      <GestureHandlerRootView>
         <SafeAreaView className="bg-white h-full">
             <ScrollView>
                 <View className="w-full justify-center items-center h-full px-4 my-6 py-6">
@@ -126,7 +124,6 @@ const SignUpScreen = () => {
                 </View>
             </ScrollView>
         </SafeAreaView>
-      </GestureHandlerRootView>
     );
 };
 
