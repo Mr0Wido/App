@@ -8,6 +8,14 @@ import Trending from '../../components/Trending';
 import ProductCard from '../../components/ProductCard';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+// burasu deneme amaclı API ve Sunucu kullanmadan ürünleri sipariş kısmına gönderme
+const products = [
+  { id: 1, name: 'Product 1', price: '20', image: images.fuseTea },
+  { id: 2, name: 'Product 2', price: '30', image: images.fuseTea },
+  { id: 3, name: 'Product 3', price: '40', image: images.fuseTea },
+  { id: 4, name: 'Product 4', price: '50', image: images.fuseTea },
+]
+//
 
 const Home = () => {
   
@@ -23,9 +31,9 @@ const Home = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <FlatList
-          data={[{ id: 1 }, { id:2 }, { id:3 }, {id:4}]} // itemler
+          data={products} // itemler
           
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <ProductCard product={item}/>
           )}
