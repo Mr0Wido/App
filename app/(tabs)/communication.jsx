@@ -1,4 +1,4 @@
-import { View, Text, Image,} from 'react-native'
+import { View, Text, Image, ScrollView} from 'react-native'
 import React, {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '../../components/CustomButton';
@@ -41,7 +41,7 @@ const Communication = () => {
           />
           <CustomButton 
             title={"Ara"}
-            containerStyles="w-36 mt-4 items-center mx-2 bg-green-500"
+            containerStyles="w-36 h-20  mt-4 items-center mx-2 bg-green-500"
             handlePress={submit}
             
           />
@@ -55,7 +55,7 @@ const Communication = () => {
           <Text className="text-base text-center font-pregular mt-2">WhatsApp İletişim</Text>
           <CustomButton 
             title={"Mesaj Gönder"}
-            containerStyles="w-96 mt-4 items-center mx-2 bg-green-500"
+            containerStyles="w-96 h-20 mt-4 items-center mx-2 bg-green-500"
             handlePress={submit}
           />
         </View>

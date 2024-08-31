@@ -5,13 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../../components/SearchInput';
 import Trending from '../../components/Trending';
-import CustomButton from '../../components/CustomButton';
+import ProductCard from '../../components/ProductCard';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const Home = () => {
   
-  const [refreshing, setrefreshing] = useState(false)
+  const [numColumns, setnumColumns] = useState(2);
+  const [refreshing, setrefreshing] = useState(false);
   const onRefresh = async () => {
     setrefreshing(true);
     // yeni item, stok güncelleme
@@ -26,9 +27,7 @@ const Home = () => {
           
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Text className="text-3xl">
-              {item.id}
-            </Text>
+            <ProductCard product={item}/>
           )}
           ListHeaderComponent={() => (
             <View className="my-6 px-4 space-y-6">
@@ -48,7 +47,8 @@ const Home = () => {
               </View>
             </View>
           )}
-          
+          key={numColumns.toString()}
+          numColumns={numColumns}
           refreshControl={<RefreshControl
               refreshing={refreshing}
               onRefresh={onRefresh}

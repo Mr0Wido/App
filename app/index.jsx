@@ -47,7 +47,7 @@ export default function App(){
                         <CustomButton
                             title="Giriş Yap"
                             handlePress={() => {router.push('./sign-in')}}
-                            containerStyles={"bg-primary w-64 mt-7 items-center"}
+                            containerStyles={"bg-primary w-64 h-20 mt-7 items-center"}
                             icon={icons.home}
                         
                         />
@@ -56,7 +56,7 @@ export default function App(){
                         <CustomButton
                             title="Kayıt Ol"
                             handlePress={() => {router.push('./sign-up')}}
-                            containerStyles={"bg-primary w-64 mt-7 items-center"}
+                            containerStyles={"bg-primary w-64 h-20 mt-7 items-center"}
                             icon={icons.plus}
                         />
                     </View>

@@ -76,7 +76,7 @@ const SignIn = () => {
           <CustomButton
             title="Giriş Yap"
             handlePress={handleSignIn}
-            containerStyles="bg-primary w-64 mt-7 items-center"
+            containerStyles="bg-primary w-64 h-20 mt-7 items-center"
             icon={icons.home}
             isLoading={isSubmitting}
           />

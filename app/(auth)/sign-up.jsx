@@ -109,7 +109,7 @@ const SignUpScreen = () => {
                     <CustomButton
                         title={isSubmitting ? "Kayıt Ediliyor..." : "Kayıt Ol"}
                         handlePress={handleSignUp}
-                        containerStyles="bg-primary w-64 mt-7 items-center"
+                        containerStyles="bg-primary w-64 h-20 mt-7 items-center"
                         icon={icons.plus}
                         isLoading={isSubmitting} // Pass loading state to CustomButton
                     />
