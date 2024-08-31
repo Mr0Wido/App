@@ -36,18 +36,14 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="h-full bg-white">
-      <ScrollView>
-       <View className="w-full flex-row items-center justify-center">
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+       <View className="w-full flex-row items-center justify-center pt-32">
         <Image 
           className="w-12 h-12 mt-14 right-8"
           source={icons.user}
           tintColor={'orange'}
         />
-       <FormField
-        title="Müşteri Numarası"
-        value={form.customerNo}
-        otherStyles="mt-7"
-      />
+        
       <Pressable
         className="mt-14 left-8"
         onPress={handleIconPress}
@@ -66,7 +62,7 @@ const Profile = () => {
           Hesap Bilgileri {iconClicked ? "true":"false"}
         </Text>
        </View>
-      <View className="w-full justify-center items-center h-full px-4">
+      <View className="w-full justify-center items-center h-full -mt-12">
       <FormField
         title="İsim"
         value={form.username}

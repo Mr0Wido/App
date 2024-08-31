@@ -11,7 +11,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Home = () => {
   
-  const [numColumns, setnumColumns] = useState(2);
+ 
   const [refreshing, setrefreshing] = useState(false);
   const onRefresh = async () => {
     setrefreshing(true);
@@ -47,8 +47,7 @@ const Home = () => {
               </View>
             </View>
           )}
-          key={numColumns.toString()}
-          numColumns={numColumns}
+          
           refreshControl={<RefreshControl
               refreshing={refreshing}
               onRefresh={onRefresh}

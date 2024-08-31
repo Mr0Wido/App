@@ -9,10 +9,10 @@ const ProductCard = ( { product: {title, price, image} } ) => {
       }
     const [clickedButton, setclickedButton] = useState(false)
   return (
-    <View className="flex-row items-center px-48 mb-14">
+    <View className="flex items-center px-4 mb-14">
       <Text className=" text-black font-psemibold text-base" numberOfLines={1}> 12 </Text>
       <View className="flex-row gap-3 items-start">
-            <View className="justify-center items-center flex-row flex-1">
+            <View className="justify-center items-center  flex-1">
                 <View className="w-[46px] h-[46px] rounded-lg border-secondary justify-center
                 items-center p-0.5">
                     <CustomButton 
