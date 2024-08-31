@@ -18,6 +18,8 @@ import search from "../assets/icons/search.png"
 import category from "../assets/icons/category.png"
 import check from "../assets/icons/check.png"
 import whatsApp from "../assets/icons/whatsApp.png"
+import plusCircle from "../assets/icons/plusCircle.png";
+import minesCircle from "../assets/icons/minesCircle.png";
 
 
 export default {
@@ -41,5 +43,7 @@ export default {
      category,
      check,
      whatsApp,
+     plusCircle,
+     minesCircle,
 };
 

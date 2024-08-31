@@ -23,7 +23,7 @@ const Home = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <FlatList
-          data={[{ id: 1 }, { id:2 }, { id:3 }]} // itemler
+          data={[{ id: 1 }, { id:2 }, { id:3 }, {id:4}]} // itemler
           
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
