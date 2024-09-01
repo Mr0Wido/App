@@ -5,13 +5,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../../components/SearchInput';
 import Trending from '../../components/Trending';
-import CustomButton from '../../components/CustomButton';
+import ProductCard from '../../components/ProductCard';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+// burasu deneme amaclı API ve Sunucu kullanmadan ürünleri sipariş kısmına gönderme
+const products = [
+  { id: 1, name: 'Product 1', price: '20', amaount: '1', image: images.fuseTea },
+  { id: 2, name: 'Product 2', price: '30', amaount: '1', image: images.fuseTea },
+  { id: 3, name: 'Product 3', price: '40', amaount: '1', image: images.fuseTea },
+  { id: 4, name: 'Product 4', price: '50', amaount: '1', image: images.fuseTea },
+]
+//
 
 const Home = () => {
   
-  const [refreshing, setrefreshing] = useState(false)
+ 
+  const [refreshing, setrefreshing] = useState(false);
   const onRefresh = async () => {
     setrefreshing(true);
     // yeni item, stok güncelleme
@@ -22,13 +31,11 @@ const Home = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <FlatList
-          data={[{ id: 1 }, { id:2 }, { id:3 }]} // itemler
+          data={products} // itemler
           
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <Text className="text-3xl">
-              {item.id}
-            </Text>
+            <ProductCard product={item}/>
           )}
           ListHeaderComponent={() => (
             <View className="my-6 px-4 space-y-6">
