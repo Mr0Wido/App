@@ -1,14 +1,20 @@
 import { View, Text, Image, Pressable } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../components/CustomButton";
 import { icons } from "../constants";
 import { images } from "../constants";
 import useOrderStore from "./OrderStore";
 
 const ProductCard = ({ product }) => {
+  const addOrder = useOrderStore((state) => state.addOrder);
+  const [counter, setcounter] = useState(1);
+
   const handleOrder = () => {
-    addOrder(product);
-  }
+
+    const updateProduct = {...product, amaount:counter}
+    updateProduct.id
+    addOrder(updateProduct);
+  };
   const counterQuantity = (operation) => {
     setcounter((prevCounter) => {
       if (operation === "increase") {
@@ -19,9 +25,9 @@ const ProductCard = ({ product }) => {
       return prevCounter;
     });
   };
-  const addOrder = useOrderStore((state) => state.addOrder); 
-  const [counter, setcounter] = useState(1);
-  const [clickedButton, setclickedButton] = useState(false);
+
+  // if counter change, product.amaount will affect from it;
+ 
   return (
     <View className="flex-1 flex-col items-center justify-center px-4 mb-14">
       <Image source={product.image} />
@@ -29,7 +35,9 @@ const ProductCard = ({ product }) => {
       <Text className=" text-black font-pregular text-base" numberOfLines={1}>
         {product.name}
       </Text>
-      <Text className="text-xl font-psemibold text-red-600">{product.price}</Text>
+      <Text className="text-xl font-psemibold text-red-600">
+        {product.price}
+      </Text>
       <View className="flex-row gap-4 items-center justify-center mt-2">
         <Pressable
           onPress={() => {
@@ -67,7 +75,6 @@ const ProductCard = ({ product }) => {
         handlePress={handleOrder}
         icon={icons.shopping}
       />
-      {clickedButton ? <Text>true</Text> : <Text>false</Text>}
     </View>
   );
 };

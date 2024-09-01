@@ -10,10 +10,10 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // burasu deneme amaclı API ve Sunucu kullanmadan ürünleri sipariş kısmına gönderme
 const products = [
-  { id: 1, name: 'Product 1', price: '20', image: images.fuseTea },
-  { id: 2, name: 'Product 2', price: '30', image: images.fuseTea },
-  { id: 3, name: 'Product 3', price: '40', image: images.fuseTea },
-  { id: 4, name: 'Product 4', price: '50', image: images.fuseTea },
+  { id: 1, name: 'Product 1', price: '20', amaount: '1', image: images.fuseTea },
+  { id: 2, name: 'Product 2', price: '30', amaount: '1', image: images.fuseTea },
+  { id: 3, name: 'Product 3', price: '40', amaount: '1', image: images.fuseTea },
+  { id: 4, name: 'Product 4', price: '50', amaount: '1', image: images.fuseTea },
 ]
 //
 
