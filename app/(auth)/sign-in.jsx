@@ -71,7 +71,7 @@ const SignIn = () => {
             handleChangeText={(e) => setform({ ...form, password: e })}
             otherStyles="mt-7"
             icon={icons.password}
-            secureTextEntry={true}
+            
           />
           <CustomButton
             title="Giriş Yap"
