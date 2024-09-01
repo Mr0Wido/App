@@ -1,9 +1,9 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 
 const useOrderStore = create((set) => ({
     orders:[],
-
+ 
     addOrder: (product) => set((state) => {
         const existingProduct = state.orders.findIndex(order => order.id === product.id);
             // findIndex  -1 den büyükse ürün var yoksa -1 döndürür
