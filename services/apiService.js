@@ -106,3 +106,36 @@ export const signUp = async (name, surname, email, password, phone_number, compa
         throw new Error(error.response?.data?.message || 'Kayıt yapılırken bir hata oluştu.');
     }
 };
+
+
+// Profil bilgilerini getirme
+export const getProfile = async (token) => {
+    try {
+        const response = await api.get('/api/profile', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error during profile fetch:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Profil bilgileri getirilirken bir hata oluştu.');
+    }
+};
+
+// Profil bilgilerini güncelleme
+export const updateProfile = async (profileData) => {
+    const token = await getToken();
+    if (!token) throw new Error('Token bulunamadı');
+    try {
+        const response = await api.put('/api/profile', profileData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error during profile update:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Profil bilgileri güncellenirken bir hata oluştu.');
+    }
+};
