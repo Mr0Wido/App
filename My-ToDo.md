@@ -15,3 +15,5 @@
 - ### Kayıtlı tüm hesapları silicem databaseden bakalım giriş bilgisi istiyecek mi tekrardan.
 - ### Giriş ekranında password gösterme butonu sıkıntı.
 - ### Toplam sipariş fiyatı.
+- ### Eposta için doğrulama, 
+- ### Token silme silenen hesaplardan giriş isteme
