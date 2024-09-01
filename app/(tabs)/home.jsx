@@ -32,10 +32,10 @@ const Home = () => {
       <SafeAreaView className="bg-white h-full">
         <FlatList
           data={products} // itemler
-          
           keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
           renderItem={({ item }) => (
-            <ProductCard product={item}/>
+          <ProductCard product={item}/>
           )}
           ListHeaderComponent={() => (
             <View className="my-6 px-4 space-y-6">
