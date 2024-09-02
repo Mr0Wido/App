@@ -8,11 +8,15 @@ const FormField = ({
   value,
   placeholder,
   handleChangeText,
+  handleBlur,
   otherStyles,
   icon,
+  error,
   isEditable = true,
+  secureTextEntry,
   ...props
 }) => {
+
   const [showPassword, setShowPassword] = useState(false);
   const [isFocus, setisFocus] = useState(false);
 
@@ -40,7 +44,10 @@ const FormField = ({
           editable={isEditable}
           source={icon}
           onFocus={() => setisFocus(true)}
-          onBlur={() => setisFocus(false)}
+          onBlur={() => { setisFocus(false);
+            if (handleBlur) 
+              handleBlur();
+            }}
           secureTextEntry={title === "Şifre" && !showPassword}
           {...props}
         />
@@ -58,6 +65,7 @@ const FormField = ({
           </TouchableOpacity>
         )}
       </View>
+      {error && <Text className="text-red-500 text-sm">{error}</Text>}
     </View>
   );
 };

@@ -9,39 +9,27 @@ import { signIn } from '../../services/apiService';
 import { Link, router } from 'expo-router';
 import { icons } from '../../constants';
 import { Alert } from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email('Geçerli bir email adresi giriniz').required('Email alanı zorunludur'),
+  password: Yup.string().required('Şifre alanı zorunludur'),
+});
 
 const SignIn = () => {
-  const [form, setform] = useState({
-    email: "",
-    password: "",
-  });
+  const handleSignIn = async (values) => {
+    const { email, password } = values;
 
-  const [loading, setLoading] = useState(false);
-  const [isSubmitting, setSubmitting] = useState(false);
-
-  const handleSignIn = async () => {
-    const { email, password } = form;
-
-    if (!email || !password) {
-      Alert.alert("Lütfen, tüm alanları doldurunuz!");
-      return;
-    }
-
-    setLoading(true);
-    setSubmitting(true);
-
-    try {
-      const response = await signIn(email, password);
-      await saveToken(response.token); // Token'ı kaydediyoruz
-      router.replace('/home'); // Navigate to Home screen
-    } catch (error) {
-      const errorMessage = error?.response?.data?.message || "Bir hata oluştu. Lütfen tekrar deneyin.";
-      Alert.alert("Hata", errorMessage);
-    } finally {
-      setLoading(false);
-      setSubmitting(false);
-    }
-  };
+  try {
+    const response = await signIn(email, password);
+    await saveToken(response.token);
+    router.replace('/home');
+  } catch (error) {
+    const errorMessage = error?.response?.data?.message || 'Bir hata oluştu. Lütfen tekrar deneyin.';
+    Alert.alert('Hata', errorMessage);
+  }
+};
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -57,40 +45,54 @@ const SignIn = () => {
             className="w-[540] h-[84px]"
             resize="contain"
           />
-          <FormField
-            title="Email"
-            value={form.email}
-            handleChangeText={(e) => setform({ ...form, email: e })}
-            otherStyles="mt-7"
-            keyboardType="email-address"
-            icon={icons.user}
-          />
-          <FormField
-            title="Şifre"
-            value={form.password}
-            handleChangeText={(e) => setform({ ...form, password: e })}
-            otherStyles="mt-7"
-            icon={icons.password}
-            
-          />
-          <CustomButton
-            title="Giriş Yap"
-            handlePress={handleSignIn}
-            containerStyles="bg-primary w-64 h-20 mt-7 items-center"
-            icon={icons.home}
-            isLoading={isSubmitting}
-          />
-          <View className="flex justify-center flex-row gap-2">
-            <Text className="p-2 text-sm text-newTextColor font-pregular">
-              Hesabınız yok mu? 
-            </Text>
-            <Link href="/sign-up" className="p-2 text-sm font-psemibold text-primary">
-              Kayıt Ol
-            </Link>
-            <Link href="/home" className="p-2 text-sm font-psemibold text-primary">
-              Anasayfa
-            </Link>
-          </View>
+          <Formik
+          initialValues = {{email: '', password: ''}}
+          validationSchema = {validationSchema}
+          onSubmit={handleSignIn}
+          >
+            {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isSubmitting}) => (
+            <>
+              <FormField
+                title="Email"
+                value={values.email}
+                handleChangeText= {handleChange('email')}
+                handleBlur={handleBlur('email')}
+                otherStyles="mt-7"
+                keyboardType="email-address"
+                icon={icons.user}
+                error={touched.email && errors.email}
+              />
+              <FormField
+                title="Şifre"
+                value={values.password}
+                handleChangeText={handleChange('password')}
+                handleBlur={handleBlur('password')}
+                otherStyles="mt-7"
+                icon={icons.password}
+                error ={touched.password && errors.password}
+                
+              />
+              <CustomButton
+                title="Giriş Yap"
+                handlePress={handleSubmit}
+                containerStyles="bg-primary w-64 h-20 mt-7 items-center"
+                icon={icons.home}
+                isLoading={isSubmitting}
+              />
+              <View className="flex justify-center flex-row gap-2">
+                <Text className="p-2 text-sm text-newTextColor font-pregular">
+                  Hesabınız yok mu? 
+                </Text>
+                <Link href="/sign-up" className="p-2 text-sm font-psemibold text-primary">
+                  Kayıt Ol
+                </Link>
+                <Link href="/home" className="p-2 text-sm font-psemibold text-primary">
+                  Anasayfa
+                </Link>
+              </View>
+            </>
+            )}
+          </Formik>
         </View>
       </ScrollView>
     </SafeAreaView>
