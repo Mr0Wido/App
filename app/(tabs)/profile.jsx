@@ -49,7 +49,7 @@ const Profile = () => {
             style={{ tintColor: 'orange' }} // statik tintColor
           />
           <Text className="text-2xl font-psemibold">
-            Hesap Bilgileriiii {iconClicked ? "true" : "false"}
+            Hesap Bilgileri {iconClicked ? "true" : "false"}
           </Text>
           <Pressable onPress={handleIconPress}>
             <Image
