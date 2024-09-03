@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Alert } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
@@ -25,7 +25,10 @@ const Order = () => {
     // orders bagımlılıktır degiştigi an tekrar fonksiyon kısmı calışır
   },[orders])
    
- 
+  const handlePressAction = () => {
+    cleanOrders();
+    
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -51,7 +54,7 @@ const Order = () => {
             <CustomButton 
               title="Siparişi Tamamla"
               containerStyles="bg-primary w-72 h-12 mt-7 items-center justify-center"
-              handlePress={cleanOrders}
+              handlePress={handlePressAction}
               icon={icons.shopping}
             />
           </View>
