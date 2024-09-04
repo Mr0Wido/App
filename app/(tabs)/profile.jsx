@@ -23,9 +23,11 @@ const Profile = () => {
     companyAddress: "",
   });
   const [iconClicked, seticonClicked] = useState(false);
+  const [showForm, setshowForm] = useState(false);
 
   const handleIconPress = () => {
     seticonClicked((prevState) => !prevState);
+    setshowForm(!showForm);
   };
 
   const handleActionPress = () => {
@@ -33,6 +35,7 @@ const Profile = () => {
       seticonClicked((prevState) => !prevState);
     }
     submit();
+    
   };
 
   const submit = async () => {
@@ -59,6 +62,10 @@ const Profile = () => {
             />
           </Pressable>
         </View>
+        <View className="items-center justify-center">
+         <Text className="text-base text-red-600 font-psemibold" >//Deneme Müşteri No: #5555</Text>
+        </View>
+        { showForm && ( 
         <View className="w-full justify-center items-center mt-7">
           <FormField
             title="İsim"
@@ -124,6 +131,7 @@ const Profile = () => {
             
           />
         </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
