@@ -62,7 +62,7 @@ const TabLayout = () => {
                 <TabIcon
                     icon={icons.shopping}
                     color={color}
-                    name="Siparişlerim"
+                    name="Sepetim"
                     focused={focused}
                 />
             

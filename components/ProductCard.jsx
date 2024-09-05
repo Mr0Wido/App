@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
         </Pressable>
       </View>
       <CustomButton
-        title="Sipariş Et"
+        title="Sepete Ekle"
         containerStyles="bg-primary w-48 h-12 mt-4 items-center"
         handlePress={handleOrder}
         icon={icons.shopping}

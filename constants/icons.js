@@ -21,6 +21,10 @@ import whatsApp from "../assets/icons/whatsApp.png"
 import plusCircle from "../assets/icons/plusCircle.png";
 import minesCircle from "../assets/icons/minesCircle.png";
 import power from "../assets/icons/power.png";
+import up from  "../assets/icons/up.png";
+import down from  "../assets/icons/down.png";
+import bag from  "../assets/icons/bag.png";
+
 
 
 export default {
@@ -47,5 +51,9 @@ export default {
      plusCircle,
      minesCircle,
      power,
+     up,
+     down,
+     bag,
+    
 };
 
