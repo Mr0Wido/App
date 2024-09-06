@@ -138,7 +138,7 @@ const Profile = () => {
               {iconClicked && (
                 <CustomButton
                   title="Kaydet"
-                  handlePress={handleActionPress}
+                  handlePress={handleActionPress} // fonksiyonu ayarlanıcak
                   containerStyles="bg-primary w-36 h-12 mt-7 items-center"
                   icon={icons.check}
                 />
@@ -170,7 +170,7 @@ const Profile = () => {
           )}
           <CustomButton
             title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
-            handlePress={handleShowOrders}
+            handlePress={handleShowOrders} // foknsiyomu ayarlanıcak
             containerStyles="bg-primary w-64 h-12 mt-7 items-center"
             icon={showOrders ? icons.up : icons.down}
           />
