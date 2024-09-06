@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { icons } from "../../constants";
+import { router } from "expo-router";
 
 const Profile = () => {
   const [form, setform] = useState({
@@ -55,7 +56,7 @@ const Profile = () => {
             <Image
               source={icons.user}
               className="w-12  h-12 mr-8"
-              style={{ tintColor: "orange" }} // statik tintColor
+              style={{ tintColor: "orange" }} 
             />
             <Text className="text-xl text-black font-psemibold">
               Hesap Bilgileri
@@ -168,7 +169,15 @@ const Profile = () => {
             <View>
               <Text> Merhaba </Text>
             </View>
+            // database den siparişler cekilecek
           )}
+         <CustomButton 
+          title="Çıkış Yap"
+          containerStyles="bg-primary w-36 h-12 mt-7 items-center"
+          icon={icons.power}
+          handlePress={() => { router.push('/sign-in') }} // GEÇİCİ
+              // cıkıs fonksiyonu tanımlanıp bu kısımda orada kullanılacak
+         />
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -15,3 +15,4 @@
 - ### İletişim sayfasına yönlendirmeleri yerleştirmeliyiz. 
 - ### Eposta için doğrulama, ➡️ mailgun kullanılcak
 - ### İlk kayıtta token hatası veriyor, sebebi bilinmiyo profil ayarlaması henüz bitmediğinden kaynaklıda olabilir.
+- ### Profile kısmında siparişler kısmına data databaseden gelmek zorunda ona göre ayarlanacak.
