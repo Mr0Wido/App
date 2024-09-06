@@ -56,18 +56,12 @@ const Profile = () => {
             <Image
               source={icons.user}
               className="w-12  h-12 mr-8"
-              style={{ tintColor: "orange" }} 
+              style={{ tintColor: "orange" }}
             />
             <Text className="text-xl text-black font-psemibold">
               Hesap Bilgileri
             </Text>
           </View>
-          <CustomButton
-            title={showForms ? "Bilgileri Gizle" : "Bilgileri Görüntüle"}
-            handlePress={handleShowForms}
-            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
-            icon={showForms ? icons.up : icons.down}
-          />
           {showForms && (
             <View className="w-full justify-center items-center mt-7">
               <Text className="text-2xl font-psemibold">
@@ -141,14 +135,23 @@ const Profile = () => {
                 icon={icons.map}
                 otherStyles="mt-7"
               />
-              <CustomButton
-                title="Kaydet"
-                handlePress={handleActionPress}
-                containerStyles="bg-primary w-64 h-12 mt-7 items-center"
-                icon={icons.check}
-              />
+              {iconClicked && (
+                <CustomButton
+                  title="Kaydet"
+                  handlePress={handleActionPress}
+                  containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+                  icon={icons.check}
+                />
+              )}
             </View>
           )}
+          <CustomButton
+            title={showForms ? "Bilgileri Gizle" : "Bilgileri Görüntüle"}
+            handlePress={handleShowForms}
+            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+            icon={showForms ? icons.up : icons.down}
+          />
+         
           <View className="justify-center items-center flex-row flex-1 mt-12">
             <Image
               source={icons.bag}
@@ -159,25 +162,28 @@ const Profile = () => {
               Siparişlerim
             </Text>
           </View>
-          <CustomButton
-            title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
-            handlePress={handleShowOrders}
-            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
-            icon={showOrders ?  icons.up : icons.down }
-          />
           {showOrders && (
-            <View>
+            <View className="w-full justify-center items-center mt-7">
               <Text> Merhaba </Text>
             </View>
             // database den siparişler cekilecek
           )}
-         <CustomButton 
-          title="Çıkış Yap"
-          containerStyles="bg-primary w-36 h-12 mt-7 items-center"
-          icon={icons.power}
-          handlePress={() => { router.push('/sign-in') }} // GEÇİCİ
-              // cıkıs fonksiyonu tanımlanıp bu kısımda orada kullanılacak
-         />
+          <CustomButton
+            title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
+            handlePress={handleShowOrders}
+            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+            icon={showOrders ? icons.up : icons.down}
+          />
+          
+          <CustomButton
+            title="Çıkış Yap"
+            containerStyles="bg-red-600 w-36 h-12 mt-7 items-center"
+            icon={icons.power}
+            handlePress={() => {
+              router.push("/sign-in");
+            }} // GEÇİCİ
+            // cıkıs fonksiyonu tanımlanıp bu kısımda orada kullanılacak
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
