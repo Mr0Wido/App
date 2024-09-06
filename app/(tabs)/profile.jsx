@@ -139,7 +139,7 @@ const Profile = () => {
                 <CustomButton
                   title="Kaydet"
                   handlePress={handleActionPress}
-                  containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+                  containerStyles="bg-primary w-36 h-12 mt-7 items-center"
                   icon={icons.check}
                 />
               )}
