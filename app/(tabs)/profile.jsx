@@ -50,8 +50,8 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="h-full bg-white">
-      <ScrollView>
-        <View className="w-full flex-col justify-center items-center mt-12">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View className="flex-1 flex-col justify-center items-center mt-10">
           <View className="justify-center items-center flex-row flex-1">
             <Image
               source={icons.user}
@@ -148,11 +148,11 @@ const Profile = () => {
           <CustomButton
             title={showForms ? "Bilgileri Gizle" : "Bilgileri Görüntüle"}
             handlePress={handleShowForms}
-            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+            containerStyles="bg-primary w-64 h-12 -mt-14 items-center"
             icon={showForms ? icons.up : icons.down}
           />
          
-          <View className="justify-center items-center flex-row flex-1 mt-12">
+          <View className="bg-bjustify-center items-center flex-row flex-1 mt-12">
             <Image
               source={icons.bag}
               className="w-12 h-12 mr-8"
@@ -171,13 +171,13 @@ const Profile = () => {
           <CustomButton
             title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
             handlePress={handleShowOrders} // foknsiyomu ayarlanıcak
-            containerStyles="bg-primary w-64 h-12 mt-7 items-center"
+            containerStyles="bg-primary w-64 h-12 -mt-14 items-center"
             icon={showOrders ? icons.up : icons.down}
           />
           
           <CustomButton
             title="Çıkış Yap"
-            containerStyles="bg-red-600 w-36 h-12 mt-7 items-center"
+            containerStyles="bg-red-600 w-36 h-12 mt-7 mb-4 items-center"
             icon={icons.power}
             handlePress={() => {
               router.push("/sign-in");

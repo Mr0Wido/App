@@ -71,7 +71,7 @@ const ProductCard = ({ product }) => {
       </View>
       <CustomButton
         title="Sepete Ekle"
-        containerStyles="bg-primary w-48 h-12 mt-4 items-center"
+        containerStyles="bg-primary w-36 h-12 mt-4 items-center"
         handlePress={handleOrder}
         icon={icons.shopping}
       />
