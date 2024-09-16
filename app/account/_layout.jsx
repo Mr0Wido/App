@@ -5,8 +5,9 @@ export default function Layout() {
   return (
     <>
       <StatusBar style="dark" />
-      <Stack screenOptions={{ headerShown: false }}>
-        {/* Ekranlarınızı buraya ekleyin */}
+      <Stack>
+        <Stack.Screen name='orderDetail' options={{ headerShown: false }} />
+        <Stack.Screen name='profileDetail' options={{ headerShown: false }} />
       </Stack>
     </>
   );

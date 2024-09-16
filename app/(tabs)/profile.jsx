@@ -7,7 +7,7 @@ import {
   Pressable,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import CustomButton from "../../components/CustomButton";
 import { icons } from "../../constants";
 import { router } from "expo-router";
@@ -15,21 +15,10 @@ import { logout } from '../../services/apiService'; // Çıkış yapma servisi i
 import { removeToken } from '../../services/secureStorage'; // Token temizleme servisi import
 
 const Profile = () => {
-  const [iconClicked, setIconClicked] = useState(false);
-  const [showOrders, setShowOrders] = useState(false);
-
-  const handleIconPress = () => {
-    setIconClicked((prevState) => !prevState);
-  };
-
-  const handleShowOrders = () => {
-    setShowOrders((prevState) => !prevState);
-  };
-
   const handleLogout = async () => {
     try {
-      await removeToken(); // Token'ı temizleme işlemi
       await logout(); // Çıkış yapma servisi çağrısı
+      await removeToken(); // Token'ı temizleme işlemi
       router.push("/sign-in"); // Giriş ekranına yönlendirme
     } catch (error) {
       Alert.alert('Hata', 'Çıkış yaparken bir hata oluştu. Lütfen tekrar deneyin.');
@@ -42,7 +31,7 @@ const Profile = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View className="flex-1 flex-col justify-center items-center mt-10">
           {/* Hesap Bilgileri */}
-          <View className="justify-center items-center flex-row flex-1">
+          <View className="justify-center flex-row flex-1 pt-11">
             <Image
               source={icons.user}
               className="w-12 h-12 mr-8"
@@ -50,32 +39,26 @@ const Profile = () => {
             />
             <CustomButton
               title="Bilgileri Görüntüle"
-              handlePress={() => router.push("/ekleme/profileDetail")}
+              handlePress={() => router.push("/account/profileDetail")}
               containerStyles="bg-primary w-64 h-12 items-center"
               icon={icons.down}
             />
           </View>
 
           {/* Siparişlerim */}
-          <View className="bg-gray-200 justify-center items-center flex-row flex-1 mt-12">
+          <View className="justify-center flex-row flex-1 pb-60">
             <Image
               source={icons.bag}
               className="w-12 h-12 mr-8"
               style={{ tintColor: "orange" }}
             />
             <CustomButton
-              title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
-              handlePress={handleShowOrders}
+              title="Siparişleri Görüntüle"
+              handlePress={() => router.push("/account/orderDetail")}
               containerStyles="bg-primary w-64 h-12 items-center"
               icon={icons.down}
             />
           </View>
-          {showOrders && (
-            <View className="w-full justify-center items-center mt-7">
-              <Text>Merhaba</Text>
-              {/* Veritabanından siparişler buraya eklenecek */}
-            </View>
-          )}
 
           {/* Çıkış Yap Butonu */}
           <CustomButton

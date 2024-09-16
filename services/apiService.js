@@ -98,11 +98,13 @@ export const updateProfile = async (profileData) => {
     }
 };
 
+// Logout fonksiyonu// Logout fonksiyonu
 export const logout = async () => {
     try {
-        await api.post('/api/logout');
-        await removeToken(); // Token'ı burada siliyoruz
-    } catch (error) {
+        const response = await api.post('/api/logout');
+        return response.data;
+    }
+    catch (error) {
         console.error("Error during logout:", error.response?.data || error.message);
         throw new Error(error.response?.data?.message || 'Çıkış yapılırken bir hata oluştu.');
     }

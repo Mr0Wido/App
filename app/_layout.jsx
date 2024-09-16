@@ -46,7 +46,7 @@ const RooyLayout= () => {
             <Stack.Screen name='index' options={{headerShown: false}} />
             <Stack.Screen name="(auth)" options={{headerShown: false}}/>
             <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
-            <Stack.Screen name="ekleme" options={{headerShown: false}}/>
+            <Stack.Screen name="account" options={{headerShown: false}}/>
         </Stack>
         </>
     )
