@@ -51,7 +51,7 @@ const Profile = () => {
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View className="flex-1 flex-col justify-center items-center mt-10">
+        <View className="justify-center items-center flex-col flex-1 mt-10">
           <View className="justify-center items-center flex-row flex-1">
             <Image
               source={icons.user}
@@ -62,18 +62,21 @@ const Profile = () => {
               Hesap Bilgileri
             </Text>
           </View>
+
           {showForms && (
             <View className="w-full justify-center items-center mt-7">
-              <Text className="text-2xl font-psemibold">
-                Hesap Bilgileri {iconClicked ? "true" : "false"}
-              </Text>
-              <Pressable onPress={handleIconPress}>
-                <Image
-                  source={icons.change}
-                  className="w-12 h-12"
-                  style={{ tintColor: iconClicked ? "orange" : "black" }}
-                />
-              </Pressable>
+              <View className="flex-row items-center justify-center gap-x-4">
+                <Text className="text-2xl font-psemibold">
+                  Hesap Bilgileri {iconClicked ? "true" : "false"}
+                </Text>
+                <Pressable onPress={handleIconPress}>
+                  <Image
+                    source={icons.change}
+                    className="w-12 h-12"
+                    style={{ tintColor: iconClicked ? "orange" : "black" }}
+                  />
+                </Pressable>
+              </View>
               <Text className=" mt-4 text-xl bg-slate-50 rounded-xl border-2 border-gray-300 text-black font-psemibold">
                 No: #5555
               </Text>
@@ -139,7 +142,7 @@ const Profile = () => {
                 <CustomButton
                   title="Kaydet"
                   handlePress={handleActionPress} // fonksiyonu ayarlanıcak
-                  containerStyles="bg-primary w-36 h-12 mt-7 items-center"
+                  containerStyles="bg-primary w-36 h-12 my-7 items-center"
                   icon={icons.check}
                 />
               )}
@@ -148,11 +151,11 @@ const Profile = () => {
           <CustomButton
             title={showForms ? "Bilgileri Gizle" : "Bilgileri Görüntüle"}
             handlePress={handleShowForms}
-            containerStyles="bg-primary w-64 h-12 -mt-14 items-center"
+            containerStyles="bg-primary w-64 h-12 my-7 items-center"
             icon={showForms ? icons.up : icons.down}
           />
-         
-          <View className="bg-bjustify-center items-center flex-row flex-1 mt-12">
+
+          <View className="bg-bjustify-center items-center flex-row flex-1">
             <Image
               source={icons.bag}
               className="w-12 h-12 mr-8"
@@ -163,21 +166,23 @@ const Profile = () => {
             </Text>
           </View>
           {showOrders && (
-            <View className="w-full justify-center items-center mt-7">
-              <Text> Merhaba </Text>
+            <View className="flex-row items-center justify-center mt-7">
+              <Text className="text-2xl font-psemibold">
+                Sipariş Özetleri
+              </Text>
             </View>
             // database den siparişler cekilecek
           )}
           <CustomButton
             title={showOrders ? "Siparişleri Gizle" : "Siparişleri Görüntüle"}
             handlePress={handleShowOrders} // foknsiyomu ayarlanıcak
-            containerStyles="bg-primary w-64 h-12 -mt-14 items-center"
+            containerStyles="bg-primary w-64 h-12 my-7 items-center"
             icon={showOrders ? icons.up : icons.down}
           />
-          
+
           <CustomButton
             title="Çıkış Yap"
-            containerStyles="bg-red-600 w-36 h-12 mt-7 mb-4 items-center"
+            containerStyles="bg-red-600 w-36 h-12 my-7 items-center"
             icon={icons.power}
             handlePress={() => {
               router.push("/sign-in");
