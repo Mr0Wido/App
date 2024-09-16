@@ -5,19 +5,19 @@ import { images } from '../constants';
 import CustomButton from '../components/CustomButton';
 import { Redirect, router } from 'expo-router';
 import { icons } from "../constants";
-import { getToken, removeToken } from '../services/secureStorage';
+import { getToken, removeToken } from '../services/secureStorage'; // keychainStorage yerine secureStore
 import { useEffect } from 'react';
 import axios from 'axios';
 
 // API URL
-const API_URL = 'http://35.159.165.210:3000'; // Sunucu adresinizi buraya ekleyin
+const API_URL = process.env.API_URL || 'http://35.159.165.210:3000'; // .env dosyası için
 
 export default function App() {
 
     useEffect(() => {
         const checkToken = async () => {
             try {
-                const token = await getToken();
+                const token = await getToken(); // Token'ı secureStore'dan al
                 if (token) {
                     // Token geçerliliğini kontrol et
                     try {
@@ -29,12 +29,12 @@ export default function App() {
                         // Token geçerliyse ana sayfaya yönlendir
                         router.replace('./home');
                     } catch (error) {
-                        // Token geçersizse Secure Storage'dan sil ve giriş sayfasına yönlendir
+                        // Token geçersizse secureStore'dan sil ve giriş sayfasına yönlendir
                         if (error.response?.status === 401 || error.response?.status === 403) {
-                            await removeToken();
+                            await removeToken(); // Token'ı secureStore'dan sil
                             router.replace('./sign-in');
                         } else {
-                            console.error('Error checking token validity', error);
+                            console.error('Error checking token validity', error.message);
                             router.replace('./sign-in');
                         }
                     }
@@ -42,7 +42,7 @@ export default function App() {
                     router.replace('./sign-in');
                 }
             } catch (error) {
-                console.error('Error while checking token', error);
+                console.error('Error while checking token', error.message);
                 router.replace('./sign-in');
             }
         };
@@ -50,31 +50,32 @@ export default function App() {
     }, []);
 
     return (
-        <SafeAreaView className="bg-white h-full">
-            <ScrollView contentContainerStyle={{ height: '100%' }}>
-                <View className="w-full justify-center items-center h-full px-4">
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 16 }}>
+                <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
                     <Image
                         source={images.logo}
-                        className="w-[540] h-[84px]"
-                        resize='contain'
+                        style={{ width: 540, height: 84 }}
+                        resizeMode='contain'
                     />
-                    <View className="mt-8">
-                        <Text className=" text-3xl text-newTextColor font-pregular text-center">HOŞ GELDİNİZ!
+                    <View style={{ marginTop: 8 }}>
+                        <Text style={{ fontSize: 24, color: '#000', fontFamily: 'Poppins-Regular', textAlign: 'center' }}>
+                            HOŞ GELDİNİZ!
                         </Text>
                     </View>
-                    <View>
+                    <View style={{ marginTop: 7 }}>
                         <CustomButton
                             title="Giriş Yap"
-                            handlePress={() => { router.push('./sign-in') }}
-                            containerStyles={"bg-primary w-64 h-20 mt-7 items-center"}
+                            handlePress={() => router.push('./sign-in')}
+                            containerStyles={{ backgroundColor: '#6200EE', width: 256, height: 80, justifyContent: 'center', alignItems: 'center' }}
                             icon={icons.home}
                         />
                     </View>
-                    <View>
+                    <View style={{ marginTop: 7 }}>
                         <CustomButton
                             title="Kayıt Ol"
-                            handlePress={() => { router.push('./sign-up') }}
-                            containerStyles={"bg-primary w-64 h-20 mt-7 items-center"}
+                            handlePress={() => router.push('./sign-up')}
+                            containerStyles={{ backgroundColor: '#6200EE', width: 256, height: 80, justifyContent: 'center', alignItems: 'center' }}
                             icon={icons.plus}
                         />
                     </View>

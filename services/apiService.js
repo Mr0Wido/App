@@ -1,48 +1,5 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Alert } from 'react-native';
-
-// Token'ı AsyncStorage'dan almak
-const getToken = async () => {
-    try {
-        const token = await AsyncStorage.getItem('authToken');
-        if (!token) {
-            console.error('Token bulunamadı');
-            throw new Error('Token bulunamadı');
-        }
-        return token;
-    } catch (error) {
-        console.error("Error retrieving token: ", error.message);
-        throw new Error("Failed to retrieve token.");
-    }
-};
-
-// Token'ı AsyncStorage'a kaydetmek
-const saveToken = async (token) => {
-    try {
-        if (typeof token !== 'string') {
-            console.error('Geçersiz token formatı');
-            throw new Error('Invalid token format');
-        }
-        await AsyncStorage.setItem('authToken', token);
-    } catch (error) {
-        console.error("Error saving token: ", error.message);
-        throw new Error("Failed to save token.");
-    }
-};
-
-// Token'ı yenileme
-const refreshToken = async () => {
-    try {
-        const token = await getToken(); // refreshToken'ı buradan sağlıyoruz
-        if (!token) throw new Error('Refresh token bulunamadı');
-        const response = await axios.post('http://35.159.165.210:3000/api/refresh-token', { refreshToken: token });
-        return response.data.accessToken; // Yeni auth token'ı döndür
-    } catch (error) {
-        console.error('Token yenilenirken bir hata oluştu: ', error.message);
-        throw error;
-    }
-};
+import { getToken, saveToken, removeToken } from './secureStorage'; // secureStore.js'e güncellendi
 
 // Axios instance
 const api = axios.create({
@@ -69,8 +26,9 @@ api.interceptors.response.use(
     async (error) => {
         const { status } = error.response || {};
         if (status === 401) {
+            // Refresh token işlemi (Eğer refreshToken işlevi varsa kullanabilirsiniz)
             try {
-                const newToken = await refreshToken();
+                const newToken = await refreshToken(); // Eğer refresh token kullanıyorsanız
                 await saveToken(newToken); // Yeni token'ı kaydediyoruz
                 error.config.headers.Authorization = `Bearer ${newToken}`;
                 return axios.request(error.config);
@@ -83,33 +41,33 @@ api.interceptors.response.use(
     }
 );
 
-
 // Signin fonksiyonu
-export const signIn  = async (email,password) => {
+export const signIn = async (email, password) => {
     try {
         const response = await api.post('/api/signin', { email, password });
-        return response.data; // JWT token burada döner
-    }
-    catch (error) {
+        await saveToken(response.data.token); // Token'ı burada kaydediyoruz
+        return response.data;
+    } catch (error) {
         console.error("Error during sign in:", error.response?.data || error.message);
         throw new Error(error.response?.data?.message || 'Giriş yapılırken bir hata oluştu.');
     }
-}
+};
 
 // Signup fonksiyonu
 export const signUp = async (name, surname, email, password, phone_number, company_name, company_address) => {
     try {
         const response = await api.post('/api/signup', { name, surname, email, password, phone_number, company_name, company_address });
-        return response.data; // JWT token burada döner
+        await saveToken(response.data.token); // Token'ı burada kaydediyoruz
+        return response.data;
     } catch (error) {
         console.error("Error during sign up:", error.response?.data || error.message);
         throw new Error(error.response?.data?.message || 'Kayıt yapılırken bir hata oluştu.');
     }
 };
 
-
 // Profil bilgilerini getirme
-export const getProfile = async (token) => {
+export const getProfile = async () => {
+    const token = await getToken(); // Token'ı burada alıyoruz
     try {
         const response = await api.get('/api/profile', {
             headers: {
@@ -137,5 +95,15 @@ export const updateProfile = async (profileData) => {
     } catch (error) {
         console.error("Error during profile update:", error.response?.data || error.message);
         throw new Error(error.response?.data?.message || 'Profil bilgileri güncellenirken bir hata oluştu.');
+    }
+};
+
+export const logout = async () => {
+    try {
+        await api.post('/api/logout');
+        await removeToken(); // Token'ı burada siliyoruz
+    } catch (error) {
+        console.error("Error during logout:", error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Çıkış yapılırken bir hata oluştu.');
     }
 };

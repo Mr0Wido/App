@@ -3,6 +3,7 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import { NativeWindStyleSheet } from "nativewind";
+import { StatusBar } from 'expo-status-bar';
 
 NativeWindStyleSheet.setOutput({
     default: "native",
@@ -39,11 +40,15 @@ const RooyLayout= () => {
     }
 
     return(
+        <>
+        <StatusBar style="dark" />
         <Stack>
             <Stack.Screen name='index' options={{headerShown: false}} />
             <Stack.Screen name="(auth)" options={{headerShown: false}}/>
             <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+            <Stack.Screen name="ekleme" options={{headerShown: false}}/>
         </Stack>
+        </>
     )
 }
 

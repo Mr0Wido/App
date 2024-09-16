@@ -24,6 +24,7 @@ import power from "../assets/icons/power.png";
 import up from  "../assets/icons/up.png";
 import down from  "../assets/icons/down.png";
 import bag from  "../assets/icons/bag.png";
+import back from "../assets/icons/back.png";
 
 
 
@@ -54,6 +55,6 @@ export default {
      up,
      down,
      bag,
-    
+     back,
 };
 
