@@ -56,7 +56,7 @@ const SignUpScreen = () => {
                         }}
                     >
                         {({ isSubmitting, submitForm }) => (
-                            <View>       
+                            <View className="flex-col justify-center items-center">       
                                 <Field name="name">
                                     {({ field, meta }) => (
                                         <FormField
@@ -146,7 +146,7 @@ const SignUpScreen = () => {
                                 <CustomButton
                                     title={isSubmitting ? "Kayıt Ediliyor..." : "Kayıt Ol"}
                                     handlePress={submitForm} // Buton tıklandığında formu gönder
-                                    containerStyles="bg-primary w-64 h-20 mt-7 items-center"
+                                    containerStyles="bg-primary w-64 h-20 mt-7 items-center justify-center"
                                     icon={icons.plus}
                                     isLoading={isSubmitting} // Loading durumunu CustomButton'a geç
                                 />
