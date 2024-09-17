@@ -67,7 +67,7 @@ export default function App() {
                         <CustomButton
                             title="Giriş Yap"
                             handlePress={() => router.push('./sign-in')}
-                            containerStyles={{ backgroundColor: '#6200EE', width: 256, height: 80, justifyContent: 'center', alignItems: 'center' }}
+                            containerStyles="bg-primary w-72 h-12 mt-7 items-center justify-center"
                             icon={icons.home}
                         />
                     </View>
@@ -75,7 +75,7 @@ export default function App() {
                         <CustomButton
                             title="Kayıt Ol"
                             handlePress={() => router.push('./sign-up')}
-                            containerStyles={{ backgroundColor: '#6200EE', width: 256, height: 80, justifyContent: 'center', alignItems: 'center' }}
+                            containerStyles="bg-primary w-72 h-12 mt-7 items-center justify-center"
                             icon={icons.plus}
                         />
                     </View>
