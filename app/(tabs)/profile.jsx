@@ -41,7 +41,7 @@ const Profile = () => {
               title="Bilgileri Görüntüle"
               handlePress={() => router.push("/account/profileDetail")}
               containerStyles="bg-primary w-64 h-12 items-center"
-              icon={icons.down}
+              icon={icons.right}
             />
           </View>
 
@@ -56,7 +56,7 @@ const Profile = () => {
               title="Siparişleri Görüntüle"
               handlePress={() => router.push("/account/orderDetail")}
               containerStyles="bg-primary w-64 h-12 items-center"
-              icon={icons.down}
+              icon={icons.right}
             />
           </View>
 

@@ -25,7 +25,7 @@ import up from  "../assets/icons/up.png";
 import down from  "../assets/icons/down.png";
 import bag from  "../assets/icons/bag.png";
 import back from "../assets/icons/back.png";
-
+import right from "../assets/icons/right.png";
 
 
 export default {
@@ -56,5 +56,6 @@ export default {
      down,
      bag,
      back,
+     right,
 };
 
