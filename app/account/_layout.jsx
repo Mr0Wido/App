@@ -8,6 +8,7 @@ export default function Layout() {
       <Stack>
         <Stack.Screen name='orderDetail' options={{ headerShown: false }} />
         <Stack.Screen name='profileDetail' options={{ headerShown: false }} />
+        <Stack.Screen name='passwordChange' options={{ headerShown: false }} />
       </Stack>
     </>
   );
